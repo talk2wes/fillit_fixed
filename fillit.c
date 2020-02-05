@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/04 16:03:32 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:05:55 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int		main(int argc, char **argv)
 	int		fd[10];
 
 	fd[0] = open("./testing/g_1.txt");
-	if (argc == 2 && ft_strcmp("testing", argv[1]))
+	if (argc == 2 && ft_strcmp("testing", argv[1]) == 0)
 	{
-		
+			
 	}
 	close(fd[0]);	
 	return (0);
