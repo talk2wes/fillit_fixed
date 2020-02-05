@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/04 14:04:08 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:03:28 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void		valid_tetris(void)
 		//check line len & tetriminos length
 		if (l_len != 4 || (lines % 5 == 0 && *line != '\n'))
 			return (0);
-		if (lines % 5 == 0 && hashes > 4) //reset the hash char count for next tetriminos
+		if (lines % 5 == 0 && hashes > 4) 
+			//reset the hash char count for next tetriminos
 			hashes = 0;	
 	}
 	ft_strdel(&line);
-	if (lines > MAXIMUM_LINES)
+	if (lines > MAXIMUM_LINES || lines % 5 != 4)
 		return (0); // TOO MANY TETRIMINOS
-	
-}	
+}
