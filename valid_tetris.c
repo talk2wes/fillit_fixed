@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ************************************************************************** *
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   valid_tetris.c                                     :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/04 16:03:28 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:17:45 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 void		valid_tetris(void)
 {
 	hashes = 0;
-	lines = 0;
+	num_lines = 0;
 	line = ft_strnew(0);
 	//checking all of the teriminos
 	while ((ret = get_next_line(fd, line)) == 1 )
 	{
-		lines++;
+		num_lines++;
 		l_len = 0;
 		//check each character in each line
 		while (line[l_len] != '\n') 		
@@ -42,13 +42,13 @@ void		valid_tetris(void)
 			l_len++;
 		}
 		//check line len & tetriminos length
-		if (l_len != 4 || (lines % 5 == 0 && *line != '\n'))
+		if (l_len != 4 || (num_lines % 5 == 0 && *line != '\n'))
 			return (0);
-		if (lines % 5 == 0 && hashes > 4) 
+		if (num_lines % 5 == 0 && hashes > 4) 
 			//reset the hash char count for next tetriminos
 			hashes = 0;	
 	}
 	ft_strdel(&line);
-	if (lines > MAXIMUM_LINES || lines % 5 != 4)
+	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4)
 		return (0); // TOO MANY TETRIMINOS
 }
