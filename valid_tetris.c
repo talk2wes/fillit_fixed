@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/04 16:49:48 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/06 10:56:01 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 
 // 26 * 5 - 1 = 129 (5 LINES PER TETRIMINOS = 4X4 ARRAY + NEWLINE)
 // MINUS 1 because the last tetriminos does not have a newline
-# define MAXIMUM_LINES 130
+# define MAXIMUM_LINES 129
 /*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
 */
-void		valid_tetris(void)
+void		valid_tetris(int fd)
 {
 	int		hashes;
 	int		num_lines;
