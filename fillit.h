@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/06 11:30:56 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/06 11:38:55 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,10 @@
 # define Z_BLOCK (int[8]) {0, 0, 1, 0, 1, 1, 2, 1}
 # define ZR_BLOCK (int[8]) {1, 0, 0, 1, 1, 1, 0, 2}
 
+typedef struct	s_blocks
+{
+	void			*block_id;
+	char			c;
+	struct s_blocks *next;
+}				t_blocks;
 #endif
