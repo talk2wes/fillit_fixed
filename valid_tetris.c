@@ -6,11 +6,8 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/02/07 11:55:13 by wjohanso         ###   ########.fr       */
-=======
+/*   Updated: 2020/02/07 14:16:28 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:51:41 by wjohanso         ###   ########.fr       */
->>>>>>> g_makefile
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +20,14 @@ Tetriminos Must resemble classic tetris pieces.
 
 Each block ('#') must touch at least one other block on any of it's 4 sides.
 */
-
 // 26 * 5 - 1 = 129 (5 LINES PER TETRIMINOS = 4X4 ARRAY + NEWLINE)
 // MINUS 1 because the last tetriminos does not have a newline
-# define MAXIMUM_LINES 129
 /*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
 */
-int			valid_tetris(int fd)
+#include "fillit.h"
+# define MAXIMUM_LINES 129
+
+int			valid_tetris(int fd, t_text file)
 {
 	int		hashes;
 	int		num_lines;

@@ -6,11 +6,8 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/02/07 12:09:36 by wjohanso         ###   ########.fr       */
-=======
+/*   Updated: 2020/02/07 14:17:39 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
->>>>>>> g_makefile
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +34,17 @@
 # define JL_BLOCK (int[8]) {0, 0, 1, 0, 0, 1, 0, 2}
 # define Z_BLOCK (int[8]) {0, 0, 1, 0, 1, 1, 2, 1}
 # define ZR_BLOCK (int[8]) {1, 0, 0, 1, 1, 1, 0, 2}
-
 typedef struct	s_blocks
 {
 	void			*block_id;
 	char			c;
 	struct s_blocks *next;
 }				t_blocks;
-
 typedef struct	s_text
 {
 	char			*str;
 	struct s_text	*next;
 }				t_text;
 
+int			valid_tetris(int fd, t_text file);
 #endif
