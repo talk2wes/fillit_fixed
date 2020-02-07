@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/07 10:22:25 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:55:13 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 # define MAXIMUM_LINES 129
 /*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
 */
-void		valid_tetris(int fd)
+int			valid_tetris(int fd)
 {
 	int		hashes;
 	int		num_lines;

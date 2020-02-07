@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/07 10:33:59 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 11:41:20 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ typedef struct	s_text
 {
 	char			*str;
 	struct s_text	*next;
-}
+}				t_text;
 
 #endif
