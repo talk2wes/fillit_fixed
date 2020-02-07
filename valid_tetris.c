@@ -1,4 +1,4 @@
-/* ************************************************************************** *
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   valid_tetris.c                                     :+:      :+:    :+:   */
@@ -6,7 +6,11 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/02/07 11:55:13 by wjohanso         ###   ########.fr       */
+=======
+/*   Updated: 2020/02/07 13:51:41 by wjohanso         ###   ########.fr       */
+>>>>>>> g_makefile
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +49,7 @@ int			valid_tetris(int fd)
 		{
 			hashes = (line[l_len] == '#') ? hashes + 1 : hashes; 		
 			if (line[l_len] != '.' || line[l_len] != '#') 			
-				return (0) // INVALID CHARACTERS 	
+				return (0); // INVALID CHARACTERS 	
 			l_len++;
 		}
 		//check line len & tetriminos length
