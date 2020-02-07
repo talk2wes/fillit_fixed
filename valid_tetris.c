@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/07 14:19:28 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:39:58 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:51:41 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,33 +31,37 @@ int			valid_tetris(int fd, t_text file)
 {
 	int		hashes;
 	int		num_lines;
-	char	*line;
+	char	**line;
 	int		ret;
-
+	int		l_len;
+	
+	//This is to silience the compilers warning
+	file.next = NULL;
 	hashes = 0;
 	num_lines = 0;
-	line = ft_strnew(0);
+	line = NULL;
+	*line = ft_strnew(0);
 	//checking all of the teriminos
 	while ((ret = get_next_line(fd, line)) == 1)
 	{
 		num_lines++;
 		l_len = 0;
 		//check each character in each line
-		while (line[l_len] != '\n')
+		while ((*(*line) + l_len) != '\n')
 		{
-			hashes = (line[l_len] == '#') ? hashes + 1 : hashes; 		
-			if (line[l_len] != '.' || line[l_len] != '#') 			
+			hashes = (line[0][l_len] == '#') ? hashes + 1 : hashes;
+			if (line[0][l_len] != '.' || line[0][l_len] != '#')
 				return (0); // INVALID CHARACTERS 	
 			l_len++;
 		}
 		//check line len & tetriminos length
-		if (l_len != 4 || (num_lines % 5 == 0 && *line != '\n'))
+		if (l_len != 4 || (num_lines % 5 == 0 && **line != '\n'))
 			return (0);
 		if (num_lines % 5 == 0 && hashes > 4) 
 			//reset the hash char count for next tetriminos
 			hashes = 0;	
 	}
-	ft_strdel(&line);
+	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
 		return (0); // TOO MANY TETRIMINOS
 	return (1);
