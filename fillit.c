@@ -6,10 +6,11 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/07 11:55:09 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 12:09:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft/libft.h"
 #include "fillit.h"
 
 int		main(int argc, char **argv)
