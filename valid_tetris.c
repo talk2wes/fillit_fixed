@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/06 10:56:01 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 10:22:25 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		valid_tetris(int fd)
 		num_lines++;
 		l_len = 0;
 		//check each character in each line
-		while (line[l_len] != '\n') 		
+		while (line[l_len] != '\n')
 		{
 			hashes = (line[l_len] == '#') ? hashes + 1 : hashes; 		
 			if (line[l_len] != '.' || line[l_len] != '#') 			

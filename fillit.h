@@ -6,12 +6,16 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/06 11:38:55 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/07 10:33:59 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
+# include <unistd.h>
+# include <fcntl.h>
+# include "./libft/libft.h"
 # define I_BLOCK (int[8]) {0, 0, 0, 1, 0, 2, 0, 3}
 # define IR_BLOCK (int[8]) {0, 0, 1, 0, 2, 0, 3, 0}
 # define O_BLOCK (int[8]) {0, 0, 1, 0, 0, 1, 1, 1}
@@ -36,4 +40,11 @@ typedef struct	s_blocks
 	char			c;
 	struct s_blocks *next;
 }				t_blocks;
+
+typedef struct	s_text
+{
+	char			*str;
+	struct s_text	*next;
+}
+
 #endif
