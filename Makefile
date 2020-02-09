@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/07 14:28:08 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/09 12:11:49 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
