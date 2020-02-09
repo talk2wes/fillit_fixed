@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/09 13:38:28 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/09 14:12:25 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:51:41 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ int			valid_tetris(int fd, t_text file)
 	int		ret;
 	int		l_len;
 
-	printf("VALID_TETRIS: ENTER FUNCTION\n");	
+	//printf("VALID_TETRIS: ENTER FUNCTION\n");	
 	//This is to silience the compilers warning
 	file.next = NULL;
 	hashes = 0;
@@ -44,39 +44,52 @@ int			valid_tetris(int fd, t_text file)
 	line = NULL;
 	line = (char**) ft_strnew(0);
 	//checking all of the teriminos
-	printf("VALID_TETRIS: BEFORE WHILE LOOP\n");
+	//printf("VALID_TETRIS: BEFORE WHILE LOOP\n");
 	while ((ret = get_next_line(fd, line)) == 1)
 	{
-		printf("VALID_TETRIS: ENTER WHILE LOOP\n");
+		//printf("VALID_TETRIS: ENTER WHILE LOOP\n");
 		num_lines++;
 		l_len = 0;
 		//check each character in each line
 		while (line[0][l_len] != '\n' && line[0][l_len] != 0)
 		{
-			printf("VALID_TETRIS: ENTER SECOND WHILE LOOP\n");
+			//printf("VALID_TETRIS: ENTER SECOND WHILE LOOP\n");
 			hashes = (line[0][l_len] == '#') ? hashes + 1 : hashes;
-			printf("line# %i\tcolumn %i\tchar = '%c'\n",num_lines,l_len,line[0][l_len]);
+			//printf("line# %i\tcolumn %i\tchar = '%c'\n",
+			//num_lines,l_len,line[0][l_len]);
 			if (line[0][l_len] != '.' && line[0][l_len] != '#')
 			{
-				printf("VALID_TETRIS: Invalid Characters\n");
+				printf("VALID_TETRIS: Invalid Characters, ");
+				printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
+						line[0][l_len],num_lines,l_len + 1);
 				return (0); // INVALID CHARACTERS 	
 			}
 			l_len++;
 		}
-		printf("OUTLOOP: line %i\tcolumn: %i\n", num_lines, l_len);
+		printf("%s\n",*line);
+		//printf("OUTLOOP: line %i\tcolumn: %i\n", num_lines, l_len);
 		//check line len & tetriminos length
 		if ((l_len != 0 || l_len != 4) && num_lines % 5 == 0 && **line != '\0')
 		{
 			printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
-			printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",l_len,num_lines,**line);
+			printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",
+					l_len,num_lines,**line);
 			return (0);
 		}
-		if (num_lines % 5 == 0 && hashes > 4) 
+		if (num_lines % 5 == 0 && hashes != 4)
+		{
+			printf("VALID_TETRIS: Invalid number of hashes = %i\n",hashes);
+			return (0);
+		}
+		if (num_lines % 5 == 0) 
 			//reset the hash char count for next tetriminos
-			hashes = 0;	
+			hashes = 0;
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
+	{
+		printf("VALID_TETRIS: Too many tetriminos\n");
 		return (0); // TOO MANY TETRIMINOS
+	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/09 12:11:49 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/09 13:54:40 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
@@ -33,22 +33,19 @@ LIB_DIR = ./libft/
 all: $(NAME)
 
 $(NAME):
-	@echo "Making the Library & moving to current directory..."||:
+	@echo "Making the Library & moving library to current directory"||:
 	@cd $(LIB_DIR) && gcc -Wall -Wextra -Werror -c $(FUNCT)||:
 	@cd $(LIB_DIR) && ar rc $(NAME) *.o||:
 	@mv $(LIB_DIR)$(NAME) .||:
-	@echo "done"||:
 
 clean:
-	@echo "Removing object files..."||:
+	@echo "Removing object files"||:
 	@cd $(LIB_DIR) && rm -f *.o||:
 	@rm -f *.o||:
-	@echo "done"||:
 
 fclean: clean
-	@echo "Removing executable files & library..."||:
+	@echo "Removing executable files & library"||:
 	@rm -f $(NAME) $(EXE)||:
-	@echo "done"||:
 
 re: fclean all
 
@@ -57,8 +54,7 @@ rerun: recompile fclean
 recompile: re compile
 
 compile:
-	@echo "Compiling all files w/ library..."||:
+	@echo "Compiling all files w/ library"||:
 	@gcc -Wall -Wextra -Werror -c $(SRC).c||:
 	@gcc $(SRC).o -L. -lft -o $(EXE)||:
-	@echo "done"||:
 

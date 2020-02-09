@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/09 12:57:36 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/09 13:44:48 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 	printf("argc == %i\n", argc);
 	if (argc == 3 && ft_strcmp("testing", argv[1]) == 0)
 	{
-		printf("argv[2] = \"%s\"\nargv[3] = \"%s\"\n", argv[2], argv[3]);
+		//printf("argv[2] = \"%s\"\n", argv[2]);
 		testfile = ft_strjoin("./testfiles/", argv[2]);	
 		fd[0] = open(testfile, O_RDONLY);
 		printf("testing: %s\n", testfile);
