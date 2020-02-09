@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/09 14:12:25 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/09 14:40:57 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:51:41 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -89,6 +89,7 @@ int			valid_tetris(int fd, t_text file)
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
 	{
 		printf("VALID_TETRIS: Too many tetriminos\n");
+		printf("num_lines = %i\n",num_lines);
 		return (0); // TOO MANY TETRIMINOS
 	}
 	return (1);
