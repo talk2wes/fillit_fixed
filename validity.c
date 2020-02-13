@@ -6,20 +6,11 @@
 /*   By: jaodum <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 10:53:29 by jaodum            #+#    #+#             */
-/*   Updated: 2020/02/10 11:09:44 by jaodum           ###   ########.fr       */
+/*   Updated: 2020/02/13 10:32:02 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-t_piece			*create_blank_piece(void)
-{
-	t_piece	*new_piece;
-
-	new_piece = (t_piece*)malloc(sizeof(t_piece));
-	new_piece->next = NULL;
-	return (new_piece);
-}
 
 //check for adjacency if the pieces are touching, left, right, up, down.
 //return success if the adjacency s greater than 6
