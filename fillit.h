@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/07 14:19:45 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/13 10:32:23 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -46,5 +46,15 @@ typedef struct	s_text
 	struct s_text	*next;
 }				t_text;
 
+t_piece			*create_blank_piece(void)
+{
+	t_piece	*new_piece;
+
+	new_piece = (t_piece*)malloc(sizeof(t_piece));
+	new_piece->next = NULL;
+	return (new_piece);
+}
+
 int			valid_tetris(int fd, t_text file);
+
 #endif
