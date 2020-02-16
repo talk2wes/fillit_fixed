@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/16 12:25:39 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/16 14:55:23 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 */
 #include "fillit.h"
 # define MAXIMUM_LINES 129
-#include <stdio.h>
 
 int			valid_tetris(int fd, t_text file)
 {
@@ -52,7 +51,7 @@ int			valid_tetris(int fd, t_text file)
 				printf("VALID_TETRIS: Invalid Characters, ");
 				printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
 						line[0][l_len],num_lines,l_len + 1);
-				return (0); // INVALID CHARACTERS 	
+				return (0); 
 			}
 			l_len++;
 		}
