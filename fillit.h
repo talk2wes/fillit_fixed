@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 10:30:39 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:04:38 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -38,6 +38,7 @@
 # define INVALID_FILE -1
 # define SUCCESS 1
 # define END_OF_FILE 0
+# define MAXIMUM_LINES 129
 
 typedef struct	s_blocks
 {
@@ -55,6 +56,10 @@ typedef struct	s_map
 	char			**map;
 }				t_map;
 
+typedef struct	s_inputmap
+{
+	char			str[17];
+}				t_inputmap;
 /*
 typedef struct	s_text
 {

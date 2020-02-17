@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/17 10:50:03 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 12:04:17 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 /*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
 */
 #include "fillit.h"
-# define MAXIMUM_LINES 129
 
-int			valid_tetris(int fd, t_text file)
+int			valid_tetris(int fd)
 {
-	int		hashes;
-	int		num_lines;
-	char	**line;
-	int		ret;
-	int		l_len;
+	int			hashes;
+	int			num_lines;
+	char		**line;
+	int			ret;
+	int			l_len;
+	t_inputmap	input;
 
-	file.next = NULL;
 	hashes = 0;
 	num_lines = 0;
 	line = NULL;
@@ -51,7 +50,7 @@ int			valid_tetris(int fd, t_text file)
 				printf("VALID_TETRIS: Invalid Characters, ");
 				printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
 						line[0][l_len],num_lines,l_len + 1);
-				return (0); // INVALID CHARACTERS 	
+				return (0); 
 			}
 			l_len++;
 		}
@@ -70,8 +69,13 @@ int			valid_tetris(int fd, t_text file)
 		}
 		if (num_lines % 5 == 0) 
 			hashes = 0;
-
-		if (adjacency_counter(*map) < 6) // CHECK ADJACENCY
+		input_map_store(fd, line, num_lines, &input)
+		if (adjacency_counter(&input) >= 6) 
+		{
+			
+			//store into t_blocks
+		}
+		else
 		{
 			printf("VALID_TETRIS: ADJACENCY FAIL");
 			return (0);
@@ -82,7 +86,7 @@ int			valid_tetris(int fd, t_text file)
 	{
 		printf("VALID_TETRIS: Too many tetriminos\n");
 		printf("num_lines = %i\n",num_lines);
-		return (0); // TOO MANY TETRIMINOS
+		return (0);
 	}
 	return (1);
 }
