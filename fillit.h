@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/13 13:42:42 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:26:58 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -43,10 +43,14 @@ typedef struct	s_blocks
 {
 	//void			*block_id;
 	char			c;
-	int				loc[4][2];
+//	int				loc[4][2];
+	int				x_loc[4];
+	int				y_loc[4];
 	int				delta[2];
 	struct s_blocks *next;
 }				t_blocks;
+
+typedef struct	
 /*
 typedef struct	s_text
 {
