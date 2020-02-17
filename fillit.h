@@ -6,11 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/02/16 13:03:18 by wjohanso         ###   ########.fr       */
-=======
-/*   Updated: 2020/02/17 12:04:38 by wjohanso         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2020/02/17 13:23:11 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -47,39 +43,30 @@
 typedef struct	s_blocks
 {
 	//void			*block_id;
-<<<<<<< HEAD
-	char			letter;
-	int				loc[4][2];
-=======
 	char			c;
 //	int				loc[4][2];
 	int				x_loc[4];
 	int				y_loc[4];
->>>>>>> master
 	int				delta[2];
 	struct s_blocks *next;
 }				t_blocks;
-
-<<<<<<< HEAD
-=======
+/*
 typedef struct	s_map
 {
 	char			**map;
 }				t_map;
-
+*/
 typedef struct	s_inputmap
 {
 	char			str[17];
 }				t_inputmap;
 /*
->>>>>>> master
 typedef struct	s_text
 {
-	char			grid[5][4];
+	char			*str;
 	struct s_text	*next;
 }				t_text;
 
-/*
 typedef	struct		s_coords
 {
 	int				row;
@@ -95,6 +82,5 @@ typedef	struct		s_piece
 }					t_piece;
 */
 int			valid_tetris(int fd, t_text file);
-void		initialize_blocks(t_blocks blocks);
 
 #endif

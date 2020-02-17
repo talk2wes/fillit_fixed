@@ -6,11 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-<<<<<<< HEAD
-/*   Updated: 2020/02/16 14:55:23 by wjohanso         ###   ########.fr       */
-=======
-/*   Updated: 2020/02/17 12:04:17 by wjohanso         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2020/02/17 12:12:41 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +24,6 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 /*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
 */
 #include "fillit.h"
-<<<<<<< HEAD
-# define MAXIMUM_LINES 129
-=======
->>>>>>> master
 
 int			valid_tetris(int fd)
 {
