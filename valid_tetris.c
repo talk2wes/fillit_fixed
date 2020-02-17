@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/17 10:27:01 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:50:03 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 */
 #include "fillit.h"
 # define MAXIMUM_LINES 129
-#include <stdio.h>
 
 int			valid_tetris(int fd, t_text file)
 {
@@ -70,11 +69,13 @@ int			valid_tetris(int fd, t_text file)
 			return (0);
 		}
 		if (num_lines % 5 == 0) 
-		{
-			//check_adjacency(line, t_coords &x) // WORK IN PROGRESS
 			hashes = 0;
+
+		if (adjacency_counter(*map) < 6) // CHECK ADJACENCY
+		{
+			printf("VALID_TETRIS: ADJACENCY FAIL");
+			return (0);
 		}
-		//check_adjacency(line, t_coords &x) // WORK IN PROGRESS
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)

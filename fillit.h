@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 10:26:58 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:30:39 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -50,7 +50,11 @@ typedef struct	s_blocks
 	struct s_blocks *next;
 }				t_blocks;
 
-typedef struct	
+typedef struct	s_map
+{
+	char			**map;
+}				t_map;
+
 /*
 typedef struct	s_text
 {
