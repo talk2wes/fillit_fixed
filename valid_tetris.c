@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/17 17:04:44 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/18 13:17:03 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			valid_tetris(int fd)
 			}
 			l_len++;
 		}
-		printf("%s\n",*line);
+		//printf("%s\n",*line);
 		if ((l_len != 0 || l_len != 4) && num_lines % 5 == 0 && **line != '\0')
 		{
 			printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
@@ -70,8 +70,13 @@ int			valid_tetris(int fd)
 			return (0);
 		}
 		if (num_lines % 5 == 0) 
+		{
 			hashes = 0;
-		input_map_store(fd, line, num_lines, &input);
+			input.str = {0};
+		}
+		input_map_store(line, num_lines, &input);
+		//printf("%s\n",input.str);
+		/*
 		if (adjacency_counter(input.str) >= 6) 
 		{
 			t_blocks_store(input, &blocks);
@@ -81,6 +86,7 @@ int			valid_tetris(int fd)
 			printf("VALID_TETRIS: ADJACENCY FAIL");
 			return (0);
 		}
+		*/
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)

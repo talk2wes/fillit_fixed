@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:25:32 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/18 11:35:42 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/18 11:48:06 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* Find the minmum size of the nxn coordinate map needed to find the smallest
