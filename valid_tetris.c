@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/17 16:22:18 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:04:44 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int			valid_tetris(int fd)
 	int			ret;
 	int			l_len;
 	t_inputmap	input;
+	t_blocks	blocks;
 
+	t_blocks_init(&blocks);
 	hashes = 0;
 	num_lines = 0;
 	line = NULL;
@@ -69,8 +71,8 @@ int			valid_tetris(int fd)
 		}
 		if (num_lines % 5 == 0) 
 			hashes = 0;
-		input_map_store(fd, line, num_lines, &input)
-		if (adjacency_counter(&input) >= 6) 
+		input_map_store(fd, line, num_lines, &input);
+		if (adjacency_counter(input.str) >= 6) 
 		{
 			t_blocks_store(input, &blocks);
 		}

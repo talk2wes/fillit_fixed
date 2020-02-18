@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 16:04:23 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 17:03:33 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -85,8 +85,10 @@ typedef	struct		s_piece
 	struct s_piece	*next;
 }					t_piece;
 */
-int			valid_tetris(int fd, t_text file);
-void		input_map_store(int fd, char **line, int line_num, t_intputmap
+int			valid_tetris(int fd);
+void		input_map_store(int fd, char **line, int line_num, t_inputmap
 			*input);
 int			adjacency_counter(char *str);
+void		t_blocks_init(t_blocks *blocks);
+void		t_blocks_store(t_inputmap input, t_blocks *blocks);
 #endif
