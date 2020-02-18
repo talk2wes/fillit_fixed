@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 13:23:11 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:04:23 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -39,14 +39,18 @@
 # define SUCCESS 1
 # define END_OF_FILE 0
 # define MAXIMUM_LINES 129
-
+# define LR_SHIFT 1
+# define UD_SHIFT 4
+# define END_INDEX 15
+# define BEG_INDEX 0
+# define GRID_LENGTH 4
 typedef struct	s_blocks
 {
 	//void			*block_id;
-	char			c;
+	char			letter;
 //	int				loc[4][2];
-	int				x_loc[4];
-	int				y_loc[4];
+	int				x_loc[GRID_LENGTH];
+	int				y_loc[GRID_LENGTH];
 	int				delta[2];
 	struct s_blocks *next;
 }				t_blocks;
@@ -82,5 +86,7 @@ typedef	struct		s_piece
 }					t_piece;
 */
 int			valid_tetris(int fd, t_text file);
-
+void		input_map_store(int fd, char **line, int line_num, t_intputmap
+			*input);
+int			adjacency_counter(char *str);
 #endif
