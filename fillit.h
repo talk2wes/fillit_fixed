@@ -51,6 +51,12 @@ typedef struct	s_blocks
 	struct s_blocks *next;
 }				t_blocks;
 
+typedef struct coords
+{
+	int row;
+	int col;
+}		t_coords;
+
 typedef struct	s_map
 {
 	char			**map;
