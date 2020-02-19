@@ -98,10 +98,10 @@ void	solve(t_blocks **piece, char **map, int map_size)
 {
 	while (!backtrack(map, *piece, map_size))
 	{
-		map = resize_map(map, map_size);
+		map = increase_map_size(map, map_size);
 		map_size++;
 	}
 	print_board(map, map_size);
-	// free_map(map, map_size);
-	// free_list(*piece);
+	free_map(map, map_size);
+	//free_list(*piece);
 }
