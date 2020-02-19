@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/18 17:36:23 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/19 11:24:26 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 	char		c;
 	//t_blocks	*new_block;
 
-	//t_blocks_init(blocks);
 	i = 0;
 	c = 'A';
 	index = 0;
@@ -34,7 +33,8 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 		blocks = (*blocks).next;
 		c++;
 	}
-	(*blocks).next = &(t_blocks_newnode());
+	if (c > 'A')
+		(*blocks).next = t_blocks_newnode();
 	printf("YES\n");
 	
 	

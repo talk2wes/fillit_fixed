@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/18 17:31:18 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/19 10:38:26 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -93,5 +93,5 @@ int			adjacency_counter(char *str);
 void		t_blocks_init(t_blocks *blocks);
 void		t_blocks_store(t_inputmap input, t_blocks *blocks);
 void		inputmap_reset(t_inputmap *input);
-t_blocks	t_blocks_newnode();
+t_blocks	*t_blocks_newnode();
 #endif
