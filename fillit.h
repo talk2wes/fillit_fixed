@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/18 13:17:11 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:31:18 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -64,7 +64,7 @@ typedef struct	s_map
 */
 typedef struct	s_inputmap
 {
-	char			str[END_INDEX];
+	char			str[END_INDEX + 2];
 }				t_inputmap;
 /*
 typedef struct	s_text
@@ -92,4 +92,6 @@ void		input_map_store(char **line, int line_num, t_inputmap
 int			adjacency_counter(char *str);
 void		t_blocks_init(t_blocks *blocks);
 void		t_blocks_store(t_inputmap input, t_blocks *blocks);
+void		inputmap_reset(t_inputmap *input);
+t_blocks	t_blocks_newnode();
 #endif

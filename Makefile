@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/18 11:51:30 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/18 17:08:23 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
@@ -27,7 +27,8 @@ FUNCT = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 		ft_lstadd.c ft_lstiter.c ft_lstmap.c get_next_line.c
 
 SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
-	  t_blocks_store.c valid_tetris.c adjacency.c
+	  t_blocks_store.c valid_tetris.c adjacency.c inputmap_reset.c\
+	  t_blocks_newnode.c
 # normalize & solver 
 EXE = fillit
 LIB_DIR = ./libft/

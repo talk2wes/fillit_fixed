@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 17:06:08 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:36:23 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,36 @@
 
 void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 {
-	t_blocks	*ptr_blocks;
 	int			i;
 	int			index;
 	char		c;
-	
+	//t_blocks	*new_block;
+
 	//t_blocks_init(blocks);
 	i = 0;
 	c = 'A';
 	index = 0;
-	ptr_blocks = (*blocks).next;
-	while ((*ptr_blocks).next != NULL)
+	//printf("BLOCK_STORE: ENTRY\n");
+	while ((*blocks).next != NULL)
 	{
-		ptr_blocks = (*ptr_blocks).next;
+		printf("c = %c\n",c);
+		blocks = (*blocks).next;
 		c++;
 	}
-	(*ptr_blocks).letter = c;
+	(*blocks).next = &(t_blocks_newnode());
+	printf("YES\n");
+	
+	
+	blocks = (*blocks).next;
+	(*blocks).letter = c;
+	printf("BLOCK_STORE 2\n");
 	while (i < END_INDEX)
 	{
 		if (input.str[i] == '#')
 		{
-			(*ptr_blocks).x_loc[index] = i % 4;
-			(*ptr_blocks).y_loc[index++] = i / 4;
+			printf("i = %i index = %i\t(x,y) = (%i,%i)\n",i,index,i%4, i /4);
+			(*blocks).x_loc[index] = i % 4;
+			(*blocks).y_loc[index++] = i / 4;
 		}
 		i++;
 	}

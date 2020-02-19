@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/18 13:17:03 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/18 17:36:29 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int			valid_tetris(int fd)
 	t_blocks_init(&blocks);
 	hashes = 0;
 	num_lines = 0;
+	//printf("Initial input.str =  %s\n",input.str);
+	inputmap_reset(&input); //remove? 
 	line = NULL;
 	line = (char**) ft_strnew(0);
 	while ((ret = get_next_line(fd, line)) == 1)
@@ -56,7 +58,6 @@ int			valid_tetris(int fd)
 			}
 			l_len++;
 		}
-		//printf("%s\n",*line);
 		if ((l_len != 0 || l_len != 4) && num_lines % 5 == 0 && **line != '\0')
 		{
 			printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
@@ -72,21 +73,26 @@ int			valid_tetris(int fd)
 		if (num_lines % 5 == 0) 
 		{
 			hashes = 0;
-			input.str = {0};
 		}
+		printf("%s\n",*line);
 		input_map_store(line, num_lines, &input);
-		//printf("%s\n",input.str);
+		//printf("input.str = '%s'\n\n", input.str);
 		/*
-		if (adjacency_counter(input.str) >= 6) 
+		if (num_lines % 5 - 4 == 0)
 		{
-			t_blocks_store(input, &blocks);
-		}
-		else
-		{
-			printf("VALID_TETRIS: ADJACENCY FAIL");
-			return (0);
+			printf("Adjacency = %i\n",adjacency_counter(input.str));
 		}
 		*/
+		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0) 
+		{
+			//printf("check for adjacency\n");
+			t_blocks_store(input, &blocks);
+		}
+		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
+		{
+			printf("VALID_TETRIS: ADJACENCY FAIL\n");
+			return (0);
+		}
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
