@@ -33,7 +33,7 @@ void align(t_coords *x_loc, t_coords *y_loc)
 	int lowest_y;
 	int lowest_x;
 	int i;
-	i = 0;
+	i = 1;
 	lowest_x = x_loc[0].row;
 	lowest_y = y_loc[0].col;
 	while (i < 4)
@@ -46,6 +46,13 @@ void align(t_coords *x_loc, t_coords *y_loc)
 		{
 			lowest_y = y_loc[i].col;
 		}
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		x_loc[i].row -= lowest_x;
+		y_loc[i].col -= lowest_y;
 		i++;
 	}
 }
