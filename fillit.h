@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/19 10:38:26 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:51:46 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 # define FILLIT_H
 # include "libft/libft.h"
 # include <stdio.h> // REMOVE THIS FOR DEBUGGING 
+# include <string.h> // REMOVE THIS FOR DEBUGGING 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -94,4 +95,5 @@ void		t_blocks_init(t_blocks *blocks);
 void		t_blocks_store(t_inputmap input, t_blocks *blocks);
 void		inputmap_reset(t_inputmap *input);
 t_blocks	*t_blocks_newnode();
+void		t_blocks_print_data(t_blocks *blocks);
 #endif

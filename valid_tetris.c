@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/18 17:36:29 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 11:29:21 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int			valid_tetris(int fd)
 		{
 			//printf("check for adjacency\n");
 			t_blocks_store(input, &blocks);
+			printf("VALID_TETRIS // t_blocks_print_data\n");
+			t_blocks_print_data( &blocks);
 		}
 		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
 		{
