@@ -68,18 +68,18 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 {
 	int row;
 	int col;
-	row = 0;
+	row = -1;
 	char **map;
 	if (piece == NULL)
 	{
 		return map;
 	}
-	while (row < map_size)
+	while (++row < map_size)
 	{
 		col = 0;
 		while (col < map_size)
 		{
-			smallest_xy_tetris(piece, row, col);
+			smallest_xy_tetris(piece, ++col, row);
 			if (check_Overlap(map, piece, map_size))
 			{
 				map = (backtrack(place(tetris_map, piece, map_size), piece->next, map_size));
