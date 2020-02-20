@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 15:02:39 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:09:16 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,6 +28,13 @@
 # define END_INDEX 15
 # define BEG_INDEX 0
 # define GRID_LENGTH 4
+
+typedef	struct		s_coords
+{
+	int				row;
+	int				col;
+}					t_coords;
+
 typedef struct	s_blocks
 {
 	char			letter;
@@ -49,4 +56,6 @@ void		t_blocks_store(t_inputmap input, t_blocks *blocks);
 void		inputmap_reset(t_inputmap *input);
 t_blocks	*t_blocks_newnode();
 void		t_blocks_print_data(t_blocks *blocks);
+void		align(t_coords *x_loc, t_coords *y_loc);
+void		smallest_xy_tetris(t_blocks *piece, int x, int y);
 #endif
