@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 11:15:32 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:51:17 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,11 @@
 int		main(int argc, char **argv)
 {
 	int		fd[10];
-	t_text	file_1;
 	int		out;
 	char	*testfile;
 
 	testfile = ft_strnew(99);
 	out = -1;
-	file_1.str = NULL;
-	file_1.next = NULL;
 
 	//usage case
 	//if (argc == 1)
@@ -38,7 +35,7 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 		printf("testing: %s\n", testfile);
-		out = valid_tetris(fd[0], file_1);
+		out = valid_tetris(fd[0]);
 		if (out == 1)
 			printf("VALID\n");
 		else
