@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/20 11:29:21 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:36:27 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int			valid_tetris(int fd)
 	t_blocks_init(&blocks);
 	hashes = 0;
 	num_lines = 0;
-	//printf("Initial input.str =  %s\n",input.str);
 	inputmap_reset(&input); //remove? 
 	line = NULL;
 	line = (char**) ft_strnew(0);
@@ -76,19 +75,10 @@ int			valid_tetris(int fd)
 		}
 		printf("%s\n",*line);
 		input_map_store(line, num_lines, &input);
-		//printf("input.str = '%s'\n\n", input.str);
-		/*
-		if (num_lines % 5 - 4 == 0)
-		{
-			printf("Adjacency = %i\n",adjacency_counter(input.str));
-		}
-		*/
 		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0) 
 		{
-			//printf("check for adjacency\n");
 			t_blocks_store(input, &blocks);
-			printf("VALID_TETRIS // t_blocks_print_data\n");
-			t_blocks_print_data( &blocks);
+			//t_blocks_print_data(&blocks);
 		}
 		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
 		{
@@ -103,5 +93,7 @@ int			valid_tetris(int fd)
 		printf("num_lines = %i\n",num_lines);
 		return (0);
 	}
+	t_blocks_print_data(&blocks);
+
 	return (1);
 }

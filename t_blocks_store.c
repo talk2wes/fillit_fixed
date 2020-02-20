@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 12:36:43 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 14:30:30 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	t_blocks_store_xydata(t_blocks *blocks, t_inputmap *input)
 
 	index = 0;
 	i = 0;
-	printf("t_blocks_store_xydata\n");
+	//printf("t_blocks_store_xydata\n");
 	while (i < END_INDEX)
 	{
 		if ((*input).str[i] == '#')
 		{
-			printf("i = %i\tindex = %i\t(x,y) = (%i,%i)\n",i,index,i%4, i /4);
+			//printf("i = %i\tindex = %i\t(x,y) = (%i,%i)\n",i,index,i%4, i /4);
 			(*blocks).x_loc[index] = i % 4;
 			(*blocks).y_loc[index++] = i / 4;
 		}
@@ -51,7 +51,7 @@ int		t_blocks_find_length(t_blocks *blocks)
 	}
 	return (++i);
 }
-void	t_blocks_print_data(t_blocks *blocks)
+void	t_blocks_print_data(t_blocks *blocks) // REMOVE THIS : DEBUGGING 
 {
 	int i = 0;
 	int		block_num = 1;
@@ -60,7 +60,7 @@ void	t_blocks_print_data(t_blocks *blocks)
 	temp_block = blocks;	
 	printf("t_blocks_print_data function\t");
 	printf("blocks length = %i\n",t_blocks_find_length(blocks));
-	while (block_num < t_blocks_find_length(blocks))
+	while (1)
 	{
 		i = 0;
 		printf("block #%i\n",block_num++);
@@ -73,6 +73,8 @@ void	t_blocks_print_data(t_blocks *blocks)
 		printf("delta = (%i,%i)\t letter = %c\tnext = %p\n",(*blocks).delta[0],
 			(*blocks).delta[1],(*blocks).letter,(*blocks).next);
 		blocks = (*blocks).next;
+		if (blocks == NULL)
+			break ;
 	}
 }
 
@@ -96,7 +98,6 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 	// For the first block, store the data
 	if ((*blocks).delta[0] == -1)
 	{
-		printf("FIRST NODE, letter = %c\n",(*blocks).letter);
 		t_blocks_store_xydata(blocks, &input);
 		(*blocks).letter = c;
 		t_blocks_change_delta(blocks,0,0);
@@ -105,8 +106,6 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 	//For all blocks after the first node has stored data.
 	while ((*blocks).next != NULL)
 	{
-		//find the terminating node
-		printf("c = %c\n",c);
 		blocks = (*blocks).next;
 		c++;
 	}
@@ -116,17 +115,5 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 	t_blocks_change_delta(blocks,0,0);
 	(*blocks).letter = ++c;
 	//t_blocks_print_data(blocks); // remove me: debugging  
-/*		
-	while (i < END_INDEX)
-	{
-		if (input.str[i] == '#')
-		{
-			printf("i = %i\tindex = %i\t(x,y) = (%i,%i)\n",i,index,i%4, i /4);
-			(*blocks).x_loc[index] = i % 4;
-			(*blocks).y_loc[index++] = i / 4;
-		}
-		i++;
-	}
-	*/
 	blocks = block_head;
 }
