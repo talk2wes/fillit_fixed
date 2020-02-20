@@ -57,7 +57,17 @@ typedef struct	s_blocks
 	int				delta[2];
 	struct s_blocks *next;
 }				t_blocks;
+<<<<<<< HEAD
+
+typedef struct coords
+{
+	int row;
+	int col;
+}		t_coords;
+
+=======
 /*
+>>>>>>> 0fcd1064cdf0c2d4ee956eef0c0aa405aaf0914d
 typedef struct	s_map
 {
 	char			**map;
