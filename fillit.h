@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 15:09:16 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 21:40:11 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ typedef struct	s_inputmap
 {
 	char			str[END_INDEX + 2];
 }				t_inputmap;
-int			valid_tetris(int fd);
+int			valid_tetris(int fd, t_blocks *blocks);
 void		input_map_store(char **line, int line_num, t_inputmap
 			*input);
 int			adjacency_counter(char *str);
@@ -56,6 +56,7 @@ void		t_blocks_store(t_inputmap input, t_blocks *blocks);
 void		inputmap_reset(t_inputmap *input);
 t_blocks	*t_blocks_newnode();
 void		t_blocks_print_data(t_blocks *blocks);
-void		align(t_coords *x_loc, t_coords *y_loc);
+void		align(t_blocks *blocks);
+void		align_blocks(t_blocks *blocks);
 void		smallest_xy_tetris(t_blocks *piece, int x, int y);
 #endif

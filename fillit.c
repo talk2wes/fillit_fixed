@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 16:51:17 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 22:03:23 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd[10];
+	int		fd;
 	int		out;
 	char	*testfile;
+	t_blocks	*blocks;
 
+	blocks = t_blocks_newnode();
+	t_blocks_init(blocks);
 	testfile = ft_strnew(99);
 	out = -1;
-
+	fd = 0;
 	//usage case
 	//if (argc == 1)
 	//printf("argc == %i\n", argc);
@@ -28,19 +31,28 @@ int		main(int argc, char **argv)
 	{
 		//printf("argv[2] = \"%s\"\n", argv[2]);
 		testfile = ft_strjoin("./testfiles/", argv[2]);	
-		fd[0] = open(testfile, O_RDONLY);
-		if (fd[0] == -1)
+		fd = open(testfile, O_RDONLY);
+		if (fd == -1)
 		{
 			printf("invalid file, abort\n");
 			return (0);
 		}
 		printf("testing: %s\n", testfile);
-		out = valid_tetris(fd[0]);
+
+		out = valid_tetris(fd, blocks);
+		
+		//t_blocks_print_data(blocks);
+		printf("align_blocks\n");
+		align_blocks(blocks);
+		t_blocks_print_data(blocks);
 		if (out == 1)
 			printf("VALID\n");
 		else
 			printf("INVALID %i\n", out);
+		//align_blocks(blocks);
+		//printf("align_blocks exectucted\n");
+		//t_blocks_print_data(t_blocks *blocks);
 	}
-	close(fd[0]);	
+	close(fd);	
 	return (0);
 }

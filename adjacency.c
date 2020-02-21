@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 10:34:28 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/17 17:06:04 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 21:43:24 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		adjacency_counter(char *str)
 
 	i = 0;
 	adjacency_count = 0;
-	while (i < END_INDEX)
+	while (i <= END_INDEX)
 	{
 		if (str[i] == '#')
 		{

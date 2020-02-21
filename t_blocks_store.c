@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 14:30:30 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 22:03:18 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	t_blocks_store_xydata(t_blocks *blocks, t_inputmap *input)
 	index = 0;
 	i = 0;
 	//printf("t_blocks_store_xydata\n");
-	while (i < END_INDEX)
+	while (i <= END_INDEX)
 	{
 		if ((*input).str[i] == '#')
 		{

@@ -1,5 +1,22 @@
-#include "fillit.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   normalize.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/20 20:24:48 by wjohanso          #+#    #+#             */
+/*   Updated: 2020/02/20 21:34:17 by wjohanso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fillit.h"
+/*
+ * What does this function do? 
+ * -Wes
+ */
+
+/*
 void smallest_xy_tetris(t_blocks *piece, int x, int y)
 {
 	int i;
@@ -27,60 +44,47 @@ void smallest_xy_tetris(t_blocks *piece, int x, int y)
 		--i;
 	}
 }
-void align(t_block *blocks)
+*/
+
+void	align_blocks(t_blocks *blocks)
 {
-	int lowest_y;
-	int lowest_x;
-	int i;
-	i = 1;
-	lowest_x = (*blocks).x_loc[0];
-	lowest_y = (*blocks).y_loc[0];
-	while (i < 4)
+	t_blocks	*block_head;
+
+	block_head = blocks;
+	while (1)
 	{
-		if (x_loc[i].row < lowest_x)
-		{
-			lowest_x = x_loc[i].row;
-		}
-		if (y_loc[i].col < lowest_y)
-		{
-			lowest_y = y_loc[i].col;
-		}
-		i++;
+		align(blocks);
+		blocks = (*blocks).next;
+		if (blocks == NULL)
+			break ;
 	}
-	i = 0;
-	while (i < 4)
-	{
-		x_loc[i].row -= lowest_x;
-		y_loc[i].col -= lowest_y;
-		i++;
-	}
+	blocks = block_head;
 }
-/*
-void align(t_coords *x_loc, t_coords *y_loc)
+
+void align(t_blocks *blocks)
 {
-	int lowest_y;
-	int lowest_x;
+	int	smallest_x; 
+	int smallest_y;
 	int i;
+	
 	i = 1;
-	lowest_x = x_loc[0].row;
-	lowest_y = y_loc[0].col;
+	smallest_x = (*blocks).x_loc[0];
+	smallest_y = (*blocks).y_loc[0];
 	while (i < 4)
 	{
-		if (x_loc[i].row < lowest_x)
-		{
-			lowest_x = x_loc[i].row;
-		}
-		if (y_loc[i].col < lowest_y)
-		{
-			lowest_y = y_loc[i].col;
-		}
+		if ((*blocks).x_loc[i] < (*blocks).x_loc[i - 1])
+			smallest_x = (*blocks).x_loc[i]; 
+		if ((*blocks).y_loc[i] < (*blocks).y_loc[i - 1])
+			smallest_y = (*blocks).y_loc[i];
 		i++;
 	}
 	i = 0;
+	printf("Smallest x & y values found are (x,y) = (%i,%i)\n",
+			smallest_x,smallest_y);
 	while (i < 4)
 	{
-		x_loc[i].row -= lowest_x;
-		y_loc[i].col -= lowest_y;
+		(*blocks).x_loc[i] -= smallest_x;
+		(*blocks).y_loc[i] -= smallest_y;	
 		i++;
 	}
 }

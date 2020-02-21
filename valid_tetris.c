@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/20 14:36:27 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 22:03:20 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Each block ('#') must touch at least one other block on any of it's 4 sides.
 */
 #include "fillit.h"
 
-int			valid_tetris(int fd)
+int			valid_tetris(int fd, t_blocks *blocks)
 {
 	int			hashes;
 	int			num_lines;
@@ -33,9 +33,9 @@ int			valid_tetris(int fd)
 	int			ret;
 	int			l_len;
 	t_inputmap	input;
-	t_blocks	blocks;
+//	t_blocks	blocks;
 
-	t_blocks_init(&blocks);
+//k	t_blocks_init(blocks);
 	hashes = 0;
 	num_lines = 0;
 	inputmap_reset(&input); //remove? 
@@ -77,12 +77,13 @@ int			valid_tetris(int fd)
 		input_map_store(line, num_lines, &input);
 		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0) 
 		{
-			t_blocks_store(input, &blocks);
-			//t_blocks_print_data(&blocks);
+			t_blocks_store(input, blocks);
+			//t_blocks_print_data(blocks);
 		}
 		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
 		{
-			printf("VALID_TETRIS: ADJACENCY FAIL\n");
+			printf("adjacency = %i \nVALID_TETRIS: ADJACENCY FAIL\n",
+					adjacency_counter(input.str));
 			return (0);
 		}
 	}
@@ -93,7 +94,10 @@ int			valid_tetris(int fd)
 		printf("num_lines = %i\n",num_lines);
 		return (0);
 	}
-	t_blocks_print_data(&blocks);
-
+	//t_blocks_print_data(blocks);
+	//printf("align_blocks\n");
+	//align_blocks(blocks);
+	//t_blocks_print_data(blocks);
+	printf("VALID_TETRIS_RETURN\n");
 	return (1);
 }
