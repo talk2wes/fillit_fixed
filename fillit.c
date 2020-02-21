@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 22:03:23 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/20 22:17:03 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		main(int argc, char **argv)
 
 		out = valid_tetris(fd, blocks);
 		
-		//t_blocks_print_data(blocks);
+		t_blocks_print_data(blocks);
 		printf("align_blocks\n");
 		align_blocks(blocks);
 		t_blocks_print_data(blocks);
@@ -50,8 +50,8 @@ int		main(int argc, char **argv)
 		else
 			printf("INVALID %i\n", out);
 		//align_blocks(blocks);
-		//printf("align_blocks exectucted\n");
-		//t_blocks_print_data(t_blocks *blocks);
+		//printf("ALIGN BLOCKS\n");
+		//t_blocks_print_data(blocks);
 	}
 	close(fd);	
 	return (0);
