@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/21 12:28:08 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:40:15 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,6 +28,10 @@
 # define END_INDEX 15
 # define BEG_INDEX 0
 # define GRID_LENGTH 4
+# define INITIAL_XY -1
+# define INITIAL_LETTER " "
+# define INITIAL_DELTA -1
+# define INITIAL_POSITION -1
 
 typedef	struct		s_coords
 {
@@ -40,13 +44,17 @@ typedef struct	s_blocks
 	char			letter;
 	int				x_loc[GRID_LENGTH];
 	int				y_loc[GRID_LENGTH];
+	int				x_position[GRID_LENGTH];
+	int				y_position[GRID_LENGTH];
 	int				delta[2];
 	struct s_blocks *next;
 }				t_blocks;
+
 typedef struct	s_inputmap
 {
 	char			str[END_INDEX + 2];
 }				t_inputmap;
+
 int			valid_tetris(int fd, t_blocks *blocks);
 void		input_map_store(char **line, int line_num, t_inputmap
 			*input);
@@ -60,5 +68,5 @@ void		align(t_blocks *blocks);
 void		align_blocks(t_blocks *blocks);
 //void		smallest_xy_tetris(t_blocks *piece, int x, int y);
 void		t_blocks_change_delta(t_blocks *blocks, int i, int y);
-int			**t_blocks_poistion(t_blocks *blocks);
+//void		t_blocks_update_position(t_blocks *blocks);
 #endif

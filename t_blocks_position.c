@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:19:28 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/21 12:22:28 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:48:51 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,35 @@
 
 void	t_blocks_change_delta(t_blocks *blocks, int i, int j)
 {
+	int		i;
+
+	i = 0;
 	(*blocks).delta[0] = i;
 	(*blocks).delta[1] = j;
+	while (i < GRID_LENGTH)
+	{
+		(*blocks).x_position[i] = (*blocks).x_loc[i] + (*blocks).delta[0];
+		(*blocks).y_position[i] = (*blocks).y_loc[i] + (*blocks).delta[1];
+		i++;
+	}
 }
 
-int		**t_blocks_position(t_blocks *blocks)
+
+/*
+void		t_blocks_update_position(t_blocks *blocks)
 {
-	int		position[2][4];
 	int		i;
 
 	i = 0;
 	while (i < GRID_LENGTH)
 	{
-		position[0][i] = (*blocks).x_loc[i] + (*blocks).delta[0];
-		position[1][i] = (*blocks).y_loc[i] + (*blocks).delta[1];
+		(*blocks).x_position[i] = (*blocks).x_loc[i] + (*blocks).delta[0];
+		(*blocks).y_position[i] = (*blocks).y_loc[i] + (*blocks).delta[1];
 		i++;
 	}
-	return (position);
 }
+
+
+t_blocks_change_delta(blocks, 1, 0);
+t_blocks_update_position(blocks);
+*/
