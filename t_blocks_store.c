@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 22:03:18 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:14:24 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	t_blocks_store_xydata(t_blocks *blocks, t_inputmap *input)
 		i++;
 	}
 }
+
 int		t_blocks_find_length(t_blocks *blocks)
 {
 	int 		i;
@@ -51,6 +52,7 @@ int		t_blocks_find_length(t_blocks *blocks)
 	}
 	return (++i);
 }
+
 void	t_blocks_print_data(t_blocks *blocks) // REMOVE THIS : DEBUGGING 
 {
 	int i = 0;
@@ -76,12 +78,6 @@ void	t_blocks_print_data(t_blocks *blocks) // REMOVE THIS : DEBUGGING
 		if (blocks == NULL)
 			break ;
 	}
-}
-
-void	t_blocks_change_delta(t_blocks *blocks, int i, int j)
-{
-	(*blocks).delta[0] = i;
-	(*blocks).delta[1] = j;
 }
 
 void	t_blocks_store(t_inputmap input, t_blocks *blocks)

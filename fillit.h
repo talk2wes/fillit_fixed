@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:10 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 21:40:11 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/21 12:13:50 by wjohanso         ###   ########.fr       */
 /*   Updated: 2020/02/07 13:53:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -58,5 +58,6 @@ t_blocks	*t_blocks_newnode();
 void		t_blocks_print_data(t_blocks *blocks);
 void		align(t_blocks *blocks);
 void		align_blocks(t_blocks *blocks);
-void		smallest_xy_tetris(t_blocks *piece, int x, int y);
+//void		smallest_xy_tetris(t_blocks *piece, int x, int y);
+void		t_blocks_change_delta(t_blocks *blocks, int i, int y);
 #endif
