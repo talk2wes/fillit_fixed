@@ -18,6 +18,9 @@ int		main(int argc, char **argv)
 	int		out;
 	char	*testfile;
 	t_blocks	*blocks;
+	int num_piece;
+	char **map;
+	int map_size;
 
 	blocks = t_blocks_newnode();
 	t_blocks_init(blocks);
@@ -47,6 +50,11 @@ int		main(int argc, char **argv)
 		t_blocks_print_data(blocks);
 		if (out == 1)
 			printf("VALID\n");
+			num_piece = tetris_count(blocks);
+			map_size = board_size(num_piece);
+			map = create_empty_board(map_size);
+			//print_board(map, map_size);
+			solve(blocks, map, map_size);
 
 		else
 			printf("INVALID %i\n", out);
