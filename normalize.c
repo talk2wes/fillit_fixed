@@ -16,7 +16,7 @@
  * -Wes
  */
 
-/*
+
 void smallest_xy_tetris(t_blocks *piece, int x, int y)
 {
 	int i;
@@ -39,12 +39,12 @@ void smallest_xy_tetris(t_blocks *piece, int x, int y)
 	i--;
 	while (i >= 0)
 	{
-		(*piece).x_loc[i] = (*piece).x_loc[i] - smallest_pos_x + (*piece).delta[x];
-		(*piece).y_loc[i] = (*piece).y_loc[i] - smallest_pos_y + (*piece).delta[y];
+		(*piece).x_loc[i] = (*piece).x_loc[i] - smallest_pos_x + x;
+		(*piece).y_loc[i] = (*piece).y_loc[i] - smallest_pos_y + y;
 		--i;
 	}
 }
-*/
+
 
 void	align_blocks(t_blocks *blocks)
 {

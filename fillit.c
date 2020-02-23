@@ -47,6 +47,7 @@ int		main(int argc, char **argv)
 		t_blocks_print_data(blocks);
 		if (out == 1)
 			printf("VALID\n");
+
 		else
 			printf("INVALID %i\n", out);
 		//align_blocks(blocks);
