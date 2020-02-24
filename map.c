@@ -86,22 +86,21 @@ void free_map(char **map, int map_size)
 	}
 	free(map);
 }
-void	print_board(char **map, int b_size)
+void	print_board(char **map, int map_size)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (i < b_size)
+	while (i < map_size)
 	{
 		j = 0;
-		while (j < b_size)
+		while (j < map_size)
 		{
-			write(1, &map[i][j], 1);
+			write(1, &map[j][i], 1);
 			j++;
 		}
 		ft_putstr("\n");
 		i++;
 	}
 }
-//void print_board()
