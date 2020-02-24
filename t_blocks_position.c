@@ -21,8 +21,8 @@ void	t_blocks_change_delta(t_blocks *blocks, int i, int j)
 	(*blocks).delta[1] = j;
 	while (x < GRID_LENGTH)
 	{
-		(*blocks).x_position[x] = (*blocks).x_loc[x] + (*blocks).delta[i];
-		(*blocks).y_position[x] = (*blocks).y_loc[x] + (*blocks).delta[j];
+		(*blocks).x_position[x] = (*blocks).x_loc[x] + (*blocks).delta[0];
+		(*blocks).y_position[x] = (*blocks).y_loc[x] + (*blocks).delta[1];
 		x++;
 	}
 }

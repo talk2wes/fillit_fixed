@@ -33,9 +33,11 @@ void	t_blocks_store_xydata(t_blocks *blocks, t_inputmap *input)
 			//printf("i = %i\tindex = %i\t(x,y) = (%i,%i)\n",i,index,i%4, i /4);
 			(*blocks).x_loc[index] = i % 4;
 			(*blocks).y_loc[index++] = i / 4;
+			
 		}
 		i++;
 	}
+
 }
 
 int		t_blocks_find_length(t_blocks *blocks)
@@ -84,7 +86,7 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 {
 	int			i;
 	int			index;
-	static char		c;
+	char		c;
 	t_blocks	*block_head;
 
 	block_head = blocks;

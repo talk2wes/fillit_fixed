@@ -93,6 +93,8 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 			if (check_Overlap(tetris_map, piece, map_size))
 			{
 				map = (backtrack(place(tetris_map, piece, map_size), piece->next, map_size));
+				
+				
 			}
 			if (map)
 			{
