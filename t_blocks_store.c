@@ -84,7 +84,7 @@ void	t_blocks_store(t_inputmap input, t_blocks *blocks)
 {
 	int			i;
 	int			index;
-	char		c;
+	static char		c;
 	t_blocks	*block_head;
 
 	block_head = blocks;

@@ -41,7 +41,7 @@ void smallest_xy_tetris(t_blocks *piece, int x, int y)
 	{
 		(*piece).x_loc[i] = (*piece).x_loc[i] - smallest_pos_x + x;
 		(*piece).y_loc[i] = (*piece).y_loc[i] - smallest_pos_y + y;
-		--i;
+		i--;
 	}
 }
 
@@ -72,9 +72,9 @@ void align(t_blocks *blocks)
 	smallest_y = (*blocks).y_loc[0];
 	while (i < 4)
 	{
-		if ((*blocks).x_loc[i] < (*blocks).x_loc[i - 1])
+		if ((*blocks).x_loc[i] < smallest_x)
 			smallest_x = (*blocks).x_loc[i]; 
-		if ((*blocks).y_loc[i] < (*blocks).y_loc[i - 1])
+		if ((*blocks).y_loc[i] < smallest_y)
 			smallest_y = (*blocks).y_loc[i];
 		i++;
 	}
