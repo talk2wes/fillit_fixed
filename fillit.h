@@ -77,7 +77,7 @@ char	**create_empty_board(int map_size);
 void free_map(char **map, int map_size);
 char	**increase_map_size(char **map, int map_size);
 char **remove_tetris(char **map, t_blocks *piece, int map_size);
-char		**place(char **map, t_blocks *piece, int map_size);
+char		**place(char **map, t_blocks *piece, char letter);
 char		**backtrack(char **tetris_map, t_blocks *piece, int map_size);
 void		solve(t_blocks *piece, char **map, int map_size);
 void		print_board(char **map, int b_size);
