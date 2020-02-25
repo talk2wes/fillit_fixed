@@ -64,6 +64,9 @@ char **place(char **map, t_blocks *piece, int map_size)
 			if ((*piece).x_loc[i] == x && (*piece).y_loc[i] == y)
 			{
 				map[x][y] = piece->letter;
+				printf("printing inside the place function");
+				print_board(map, map_size);
+				printf("\n");
 				i++;
 			}
 			y++;
@@ -79,7 +82,7 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 	int col;
 	row = -1;
 	char **map;
-	if (piece == NULL)
+	if (piece->next == NULL)
 	{
 		return tetris_map;
 	}
@@ -92,6 +95,8 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 			smallest_xy_tetris(piece, col++, row);
 			if (check_Overlap(tetris_map, piece, map_size))
 			{
+				print_board(tetris_map, map_size);
+				printf("\n");
 				map = (backtrack(place(tetris_map, piece, map_size), piece->next, map_size));
 				
 				
