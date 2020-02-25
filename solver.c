@@ -50,7 +50,7 @@ char **remove_tetris(char **map, t_blocks *piece, int map_size)
 	return (map);
 }
 
-char **place(char **map, t_blocks *piece, char letter)
+void place(char **map, t_blocks *piece, char letter)
 {
 	int x;
 	int y;
@@ -68,7 +68,7 @@ char **place(char **map, t_blocks *piece, char letter)
 		// printf("\n");
 		i++;
 	}
-	return (map);
+	//return (map);
 }
 
 
@@ -95,7 +95,8 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 				printf("backtrack letter %c\n",(*piece).letter);
 				//print_board(tetris_map, map_size);
 				// printf("\n");
-				map = (backtrack(place(tetris_map, piece,piece->letter), piece->next, map_size));
+				place(tetris_map, piece,piece->letter);
+				map = (backtrack(tetris_map, piece->next, map_size));
 				
 				
 			}
@@ -114,7 +115,7 @@ void	solve(t_blocks *piece, char **map, int map_size)
 {
 	while (!backtrack(map, piece, map_size))
 	{
-		//print_board(map, map_size);
+
 		map = increase_map_size(map, map_size);
 		map_size++;
 	}
