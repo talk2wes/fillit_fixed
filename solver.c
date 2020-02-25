@@ -4,7 +4,7 @@
 int		check_Overlap(char **map, t_blocks *piece, int map_size)
 {
 	int i;
-	int col;
+	//int col;
 	int row;
 	printf("overlap function running");
 	i = 0;
