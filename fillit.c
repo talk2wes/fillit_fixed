@@ -54,8 +54,8 @@ int		main(int argc, char **argv)
 			num_piece = tetris_count(blocks);
 			map_size = board_size(num_piece);
 			map = create_empty_board(map_size);
-			print_board(map, map_size);
-			printf("\n");
+			//print_board(map, map_size);
+			//printf("\n");
 			solve(blocks, map, map_size);
 		}
 

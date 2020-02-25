@@ -6,11 +6,14 @@ int		check_Overlap(char **map, t_blocks *piece, int map_size)
 	int i;
 	//int col;
 	int row;
-	printf("overlap function running");
+
 	i = 0;
 	row = 0;
-	while(i < 4)
+	while (row < map_size)
 	{
+		col = 0;
+		while (col < map_size)
+		{
 			if ((*piece).x_position[i] < map_size && (*piece).y_position[i] < map_size
 				&& map[(*piece).x_position[i]][(*piece).y_position[i]] == '.')
 			{
@@ -18,7 +21,9 @@ int		check_Overlap(char **map, t_blocks *piece, int map_size)
 				if (i == 4)
 					return (1);
 			}
-	
+			col++;
+		}
+		row++;
 	}
 		return (0);
 }
