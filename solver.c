@@ -4,65 +4,68 @@
 int		check_Overlap(char **map, t_blocks *piece, int map_size)
 {
 	int i;
-	int y;
-	int x;
-
+	int col;
+	int row;
+	printf("overlap function running");
 	i = 0;
-	x = 0;
-	y = 0;
-	x = (*piece).x_loc[i];
-	y = (*piece).y_loc[i];
-	while (i <= 4 && x < map_size && y < map_size && map[y][x] == '.')
+	row = 0;
+	while(i < 4)
 	{
-		i++;
-		x = (*piece).x_loc[i];
-		y = (*piece).y_loc[i];
-		if (i == 4)
-			return (1);
-
+			if ((*piece).x_position[i] < map_size && (*piece).y_position[i] < map_size
+				&& map[(*piece).x_position[i]][(*piece).y_position[i]] == '.')
+			{
+				i++;
+				if (i == 4)
+					return (1);
+			}
+	
 	}
-	return (0);
+		return (0);
 }
-char ** remove_tetris(t_blocks *piece, int map_size, char **map)
+char **remove_tetris(char **map, t_blocks *piece, int map_size)
 {
-	int i;
+	printf("remove_tetris map size = %i\n", map_size);
 	int x;
 	int y;
 	x = 0;
-	y = 0;
 
-	while (i < 4)
-	{
-		x = (*piece).x_loc[i];
-		y = (*piece).y_loc[i];
-		map[x][y] = '.';
-		i += 1;
-	}
-}
 
-char **place(char **map, t_blocks *piece, int map_size)
-{
-	int y;
-	int x;
-	int i;
-	i = 0;
-	x = 0;
 	while (x < map_size)
 	{
 		y = 0;
 		while (y < map_size)
 		{
-			if ((*piece).x_loc[i] == x && (*piece).y_loc[i] == y)
-			{
-				map[x][y] == piece->letter;
-				i++;
-			}
+			if (map[x][y] == piece->letter)
+				map[x][y] = '.';
 			y++;
 		}
 		x++;
 	}
+	//prtinf("mapsize RETURN\n");
 	return (map);
 }
+
+char **place(char **map, t_blocks *piece, char letter)
+{
+	int x;
+	int y;
+	int i;
+	i = 0;
+	printf("place function\n");
+	while (i < 4)
+	{
+		x = piece->x_position[i];
+		y = piece->y_position[i];
+		map[x][y] = letter;
+		// printf("%d %d", x, y);
+		// printf("printing inside the place function");
+		// print_board(map, map_size);
+		// printf("\n");
+		i++;
+	}
+	return (map);
+}
+
 
 char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 {
@@ -70,19 +73,26 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 	int col;
 	row = -1;
 	char **map;
+	
 	if (piece == NULL)
 	{
-		return map;
+		return tetris_map;
 	}
+	map = NULL;
 	while (++row < map_size)
 	{
 		col = 0;
 		while (col < map_size)
 		{
-			smallest_xy_tetris(piece, ++col, row);
-			if (check_Overlap(map, piece, map_size))
+			t_blocks_change_delta(piece, col++, row);
+			if (check_Overlap(tetris_map, piece, map_size))
 			{
-				map = (backtrack(place(tetris_map, piece, map_size), piece->next, map_size));
+				printf("backtrack letter %c\n",(*piece).letter);
+				//print_board(tetris_map, map_size);
+				// printf("\n");
+				map = (backtrack(place(tetris_map, piece,piece->letter), piece->next, map_size));
+				
+				
 			}
 			if (map)
 			{
@@ -90,14 +100,16 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 			}
 			tetris_map = remove_tetris(tetris_map, piece, map_size);
 		}
-	}	
+	}
+	return NULL;	
 
 }
 
-void	solve(t_blocks **piece, char **map, int map_size)
+void	solve(t_blocks *piece, char **map, int map_size)
 {
-	while (!backtrack(map, *piece, map_size))
+	while (!backtrack(map, piece, map_size))
 	{
+		//print_board(map, map_size);
 		map = increase_map_size(map, map_size);
 		map_size++;
 	}

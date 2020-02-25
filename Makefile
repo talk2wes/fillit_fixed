@@ -28,7 +28,7 @@ FUNCT = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 
 SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
 	  t_blocks_store.c valid_tetris.c adjacency.c inputmap_reset.c\
-	  t_blocks_newnode.c normalize.c t_blocks_position.c 
+	  t_blocks_newnode.c normalize.c t_blocks_position.c solver.c map.c
 # normalize & solver 
 EXE = fillit
 LIB_DIR = ./libft/
