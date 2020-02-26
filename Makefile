@@ -6,12 +6,12 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/26 09:53:51 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/26 09:58:20 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
 
-NAME = libft.a
+LIB_NAME = libft.a
 FUNCT = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 		ft_strncat.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 		ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlcat.c ft_strchr.c\
@@ -32,15 +32,15 @@ SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
 
 EXE = fillit
 LIB_DIR = ./libft/
-PROG_NAME = fillit
+NAME = fillit
 
 all: $(NAME) 
 
 $(NAME): 
 	@echo "Making the Library & moving library to current directory"||:
 	@cd $(LIB_DIR) && gcc -Wall -Wextra -Werror -c $(FUNCT)||:
-	@cd $(LIB_DIR) && ar rc $(NAME) *.o||:
-	@mv $(LIB_DIR)$(NAME) .||:
+	@cd $(LIB_DIR) && ar rc $(LIB_NAME) *.o||:
+	@mv $(LIB_DIR)$(LIB_NAME) .||:
 	@echo "Compiling all files w/ library"||:
 	@gcc -Wall -Wextra -Werror -c $(SRC)||:
 	@gcc *.o -L. -lft -o $(EXE)||:
@@ -52,6 +52,6 @@ clean:
 
 fclean: clean
 	@echo "Removing executable files & library"||:
-	@rm -f $(NAME) $(EXE)||:
+	@rm -f $(LIB_NAME) $(EXE)||:
 
 re: fclean all
