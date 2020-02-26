@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 22:17:03 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/25 20:56:19 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		main(int argc, char **argv)
 			else
 			{
 				write(1, "error\n", 6);
-				return(0);
+				//return(0);
 			}		
 		}
 		else
