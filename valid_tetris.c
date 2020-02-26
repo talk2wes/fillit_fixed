@@ -43,7 +43,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 	line = (char**) ft_strnew(0);
 	while ((ret = get_next_line(fd, line)) == 1)
 	{
-		printf("%s\n",*line);
+		//printf("%s\n",*line);
 		num_lines++;
 		l_len = 0;
 		while (line[0][l_len] != '\n' && line[0][l_len] != 0)
@@ -51,23 +51,23 @@ int			valid_tetris(int fd, t_blocks *blocks)
 			hashes = (line[0][l_len] == '#') ? hashes + 1 : hashes;
 			if (line[0][l_len] != '.' && line[0][l_len] != '#')
 			{
-				printf("VALID_TETRIS: Invalid Characters, ");
-				printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
-						line[0][l_len],num_lines,l_len + 1);
+				//printf("VALID_TETRIS: Invalid Characters, ");
+				//printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
+						//line[0][l_len],num_lines,l_len + 1);
 				return (0); 
 			}
 			l_len++;
 		}
 		if ((l_len != 0 || l_len != 4) && num_lines % 5 == 0 && **line != '\0')
 		{
-			printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
-			printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",
-					l_len,num_lines,**line);
+			//printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
+			//printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",
+					//l_len,num_lines,**line);
 			return (0);
 		}
 		if (num_lines % 5 == 0 && hashes != 4)
 		{
-			printf("VALID_TETRIS: Invalid number of hashes = %i\n",hashes);
+			//printf("VALID_TETRIS: Invalid number of hashes = %i\n",hashes);
 			return (0);
 		}
 		if (num_lines % 5 == 0) 
@@ -79,16 +79,16 @@ int			valid_tetris(int fd, t_blocks *blocks)
 			t_blocks_store(input, blocks);
 		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
 		{
-			printf("adjacency = %i \nVALID_TETRIS: ADJACENCY FAIL\n",
-					adjacency_counter(input.str));
+			//printf("adjacency = %i \nVALID_TETRIS: ADJACENCY FAIL\n",
+					//adjacency_counter(input.str));
 			return (0);
 		}
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
 	{
-		printf("VALID_TETRIS: Too many tetriminos\n");
-		printf("num_lines = %i\n",num_lines);
+		//printf("VALID_TETRIS: Too many tetriminos\n");
+		//printf("num_lines = %i\n",num_lines);
 		return (0);
 	}
 	//printf("VALID_TETRIS_RETURN\n");

@@ -29,7 +29,7 @@ int		check_Overlap(char **map, t_blocks *piece, int map_size)
 }
 char **remove_tetris(char **map, t_blocks *piece, int map_size)
 {
-	printf("remove_tetris map size = %i\n", map_size);
+	//printf("remove_tetris map size = %i\n", map_size);
 	int x;
 	int y;
 	x = 0;
@@ -56,7 +56,7 @@ void place(char **map, t_blocks *piece, char letter)
 	int y;
 	int i;
 	i = 0;
-	printf("place function\n");
+	//printf("place function\n");
 	while (i < 4)
 	{
 		x = piece->x_position[i];
@@ -92,7 +92,7 @@ char **backtrack(char **tetris_map, t_blocks *piece, int map_size)
 			t_blocks_change_delta(piece, col++, row);
 			if (check_Overlap(tetris_map, piece, map_size))
 			{
-				printf("backtrack letter %c\n",(*piece).letter);
+				//printf("backtrack letter %c\n",(*piece).letter);
 				//print_board(tetris_map, map_size);
 				// printf("\n");
 				place(tetris_map, piece,piece->letter);

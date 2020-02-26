@@ -33,7 +33,7 @@ SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
 EXE = fillit
 LIB_DIR = ./libft/
 
-all: $(NAME)
+all: $(NAME) compile
 
 $(NAME):
 	@echo "Making the Library & moving library to current directory"||:
