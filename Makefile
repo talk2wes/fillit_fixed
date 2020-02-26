@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/25 20:52:09 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/26 09:53:51 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
@@ -32,6 +32,7 @@ SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
 
 EXE = fillit
 LIB_DIR = ./libft/
+PROG_NAME = fillit
 
 all: $(NAME) 
 
@@ -54,13 +55,3 @@ fclean: clean
 	@rm -f $(NAME) $(EXE)||:
 
 re: fclean all
-
-#rerun: recompile fclean
-#	./$(EXE)
-#recompile: re 
-
-#compile:
-#	@echo "Compiling all files w/ library"||:
-#	@gcc -Wall -Wextra -Werror -c $(SRC)||:
-#	@gcc *.o -L. -lft -o $(EXE)||:
-

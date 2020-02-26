@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 12:00:38 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/21 12:20:12 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/26 08:34:24 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,24 @@ int		t_blocks_find_length(t_blocks *blocks)
 void	t_blocks_print_data(t_blocks *blocks) // REMOVE THIS : DEBUGGING 
 {
 	int i = 0;
-	int		block_num = 1;
+	//int		block_num = 1;
 	t_blocks	*temp_block;
 
 	temp_block = blocks;	
-	printf("t_blocks_print_data function\t");
-	printf("blocks length = %i\n",t_blocks_find_length(blocks));
+	//printf("t_blocks_print_data function\t");
+	//printf("blocks length = %i\n",t_blocks_find_length(blocks));
 	while (1)
 	{
 		i = 0;
-		printf("block #%i\n",block_num++);
+		//printf("block #%i\n",block_num++);
 		while (i < 4)
 		{		
-			printf("Char %i (x,y) = (%i,%i)\n",i,
-			(*blocks).x_loc[i],(*blocks).y_loc[i]);
+			//printf("Char %i (x,y) = (%i,%i)\n",i,
+			//(*blocks).x_loc[i],(*blocks).y_loc[i]);
 			i++;
 		}
-		printf("delta = (%i,%i)\t letter = %c\tnext = %p\n",(*blocks).delta[0],
-			(*blocks).delta[1],(*blocks).letter,(*blocks).next);
+		//printf("delta = (%i,%i)\t letter = %c\tnext = %p\n",(*blocks).delta[0],
+		//	(*blocks).delta[1],(*blocks).letter,(*blocks).next);
 		blocks = (*blocks).next;
 		if (blocks == NULL)
 			break ;

@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/26 08:18:28 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/26 08:31:50 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,46 +48,23 @@ int			valid_tetris(int fd, t_blocks *blocks)
 		{
 			hashes = (line[0][l_len] == '#') ? hashes + 1 : hashes;
 			if (line[0][l_len] != '.' && line[0][l_len] != '#')
-			{
-				//printf("VALID_TETRIS: Invalid Characters, ");
 				return (0); 
-			}
 			l_len++;
 		}
-		//printf("l_len = %i\n",l_len);
 		if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
 			return (0);
-			/*(
-		if ((l_len != 0 || l_len != 4) && ( num_lines % 5 == 0 && **line != '\0'))
-					return (0);
-					*/
-		//printf("Hashes = %i\n",hashes);
 		if (num_lines % 5 == 4 && hashes != 4)
-		{
-			//printf("VALID_TETRIS: Invalid number of hashes = %i\n",hashes);
 			return (0);
-		}
 		if (num_lines % 5 == 0) 
-		{
 			hashes = 0;
-		}
 		input_map_store(line, num_lines, &input);
 		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0) 
 			t_blocks_store(input, blocks);
 		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
-		{
-			//printf("adjacency = %i \nVALID_TETRIS: ADJACENCY FAIL\n",
-					//adjacency_counter(input.str));
 			return (0);
-		}
 	}
 	ft_strdel(line);
 	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
-	{
-		//printf("VALID_TETRIS: Too many tetriminos\n");
-		//printf("num_lines = %i\n",num_lines);
 		return (0);
-	}
-	//printf("VALID_TETRIS_RETURN\n");
 	return (1);
 }
