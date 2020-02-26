@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/21 12:21:56 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/25 20:38:54 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
@@ -29,17 +29,20 @@ FUNCT = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 SRC = fillit.c find_minmapsize.c input_map_store.c t_blocks_init.c\
 	  t_blocks_store.c valid_tetris.c adjacency.c inputmap_reset.c\
 	  t_blocks_newnode.c normalize.c t_blocks_position.c solver.c map.c
-# normalize & solver 
+
 EXE = fillit
 LIB_DIR = ./libft/
 
-all: $(NAME) compile
+all: $(NAME) 
 
-$(NAME):
+$(NAME): 
 	@echo "Making the Library & moving library to current directory"||:
 	@cd $(LIB_DIR) && gcc -Wall -Wextra -Werror -c $(FUNCT)||:
 	@cd $(LIB_DIR) && ar rc $(NAME) *.o||:
 	@mv $(LIB_DIR)$(NAME) .||:
+	@echo "Compiling all files w/ library"||:
+	@gcc -Wall -Wextra -Werror -c $(SRC)||:
+	@gcc *.o -L. -lft -o $(EXE)||:
 
 clean:
 	@echo "Removing object files"||:
@@ -52,12 +55,12 @@ fclean: clean
 
 re: fclean all
 
-rerun: recompile fclean
-	./$(EXE)
-recompile: re compile
+#rerun: recompile fclean
+#	./$(EXE)
+#recompile: re 
 
-compile:
-	@echo "Compiling all files w/ library"||:
-	@gcc -Wall -Wextra -Werror -c $(SRC)||:
-	@gcc *.o -L. -lft -o $(EXE)||:
+#compile:
+#	@echo "Compiling all files w/ library"||:
+#	@gcc -Wall -Wextra -Werror -c $(SRC)||:
+#	@gcc *.o -L. -lft -o $(EXE)||:
 

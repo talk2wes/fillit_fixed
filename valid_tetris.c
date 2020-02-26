@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/25 20:15:59 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/25 20:38:43 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 			}
 			l_len++;
 		}
-		//printf("l_len = %i\n",l_len);
+		printf("l_len = %i\n",l_len);
 		if ((l_len != 0 || l_len != 4) && ( num_lines % 5 == 0 && **line != '\0'))
 		{
 			//printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
