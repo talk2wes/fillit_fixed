@@ -79,8 +79,8 @@ void align(t_blocks *blocks)
 		i++;
 	}
 	i = 0;
-	printf("Smallest x & y values found are (x,y) = (%i,%i)\n",
-			smallest_x,smallest_y);
+	//printf("Smallest x & y values found are (x,y) = (%i,%i)\n",
+			//smallest_x,smallest_y);
 	while (i < 4)
 	{
 		(*blocks).x_loc[i] -= smallest_x;

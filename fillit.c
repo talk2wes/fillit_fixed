@@ -30,6 +30,31 @@ int		main(int argc, char **argv)
 	//usage case
 	//if (argc == 1)
 	//printf("argc == %i\n", argc);
+	if (argc == 2)
+	{
+		//testfile = ft_strjoin("./testfiles/", argv[2]);
+		fd = open(argv[1], O_RDONLY);
+		if (fd >= 0)
+		{
+			out = valid_tetris(fd, blocks);
+			align_blocks(blocks);
+			if (out == 1)
+			{
+				//printf("VALID\n");
+				num_piece = tetris_count(blocks);
+				map_size = board_size(num_piece);
+				map = create_empty_board(map_size);
+				solve(blocks, map, map_size);
+			}
+			else
+			{
+				write(1, "error\n", 6);
+				return(0);
+			}		
+		}
+		else
+			write(1, "error\n", 6);
+	}
 	if (argc == 3 && ft_strcmp("testing", argv[1]) == 0)
 	{
 		//printf("argv[2] = \"%s\"\n", argv[2]);
@@ -37,20 +62,20 @@ int		main(int argc, char **argv)
 		fd = open(testfile, O_RDONLY);
 		if (fd == -1)
 		{
-			printf("invalid file, abort\n");
+			//printf("invalid file, abort\n");
 			return (0);
 		}
-		printf("testing: %s\n", testfile);
+		//printf("testing: %s\n", testfile);
 
 		out = valid_tetris(fd, blocks);
 		
-		t_blocks_print_data(blocks);
-		printf("align_blocks\n");
+		//t_blocks_print_data(blocks);
+		//printf("align_blocks\n");
 		align_blocks(blocks);
-		t_blocks_print_data(blocks);
+		//t_blocks_print_data(blocks);
 		if (out == 1)
 		{
-			printf("VALID\n");
+			//printf("VALID\n");
 			num_piece = tetris_count(blocks);
 			map_size = board_size(num_piece);
 			map = create_empty_board(map_size);
@@ -58,7 +83,7 @@ int		main(int argc, char **argv)
 		}
 
 		else
-			printf("INVALID %i\n", out);
+			write(1, "error\n", 6);
 		//align_blocks(blocks);
 		//printf("ALIGN BLOCKS\n");
 		//t_blocks_print_data(blocks);
