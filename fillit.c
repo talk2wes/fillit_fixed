@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/25 20:56:19 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/26 08:17:37 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		main(int argc, char **argv)
 		//printf("testing: %s\n", testfile);
 
 		out = valid_tetris(fd, blocks);
-		
+		//printf("t_blocks_print_data function about to be called\n");	
 		//t_blocks_print_data(blocks);
 		//printf("align_blocks\n");
 		align_blocks(blocks);
@@ -81,7 +81,6 @@ int		main(int argc, char **argv)
 			map = create_empty_board(map_size);
 			solve(blocks, map, map_size);
 		}
-
 		else
 			write(1, "error\n", 6);
 		//align_blocks(blocks);

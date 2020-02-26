@@ -6,7 +6,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
 /*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/25 21:10:46 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/26 08:18:28 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 	int			ret;
 	int			l_len;
 	t_inputmap	input;
-//	t_blocks	blocks;
 
-//k	t_blocks_init(blocks);
 	hashes = 0;
 	num_lines = 0;
 	inputmap_reset(&input); //remove? 
@@ -43,7 +41,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 	line = (char**) ft_strnew(0);
 	while ((ret = get_next_line(fd, line)) == 1)
 	{
-		printf("%s\n",*line);
+		//printf("%s\n",*line);
 		num_lines++;
 		l_len = 0;
 		while (line[0][l_len] != '\n' && line[0][l_len] != 0)
@@ -52,35 +50,19 @@ int			valid_tetris(int fd, t_blocks *blocks)
 			if (line[0][l_len] != '.' && line[0][l_len] != '#')
 			{
 				//printf("VALID_TETRIS: Invalid Characters, ");
-				//printf("char = '%c' ascii = %i Loc (%i,%i)\n",line[0][l_len],
-						//line[0][l_len],num_lines,l_len + 1);
 				return (0); 
 			}
 			l_len++;
 		}
-		printf("l_len = %i\n",l_len);
-		/*
-		if ((l_len != 0 || l_len != 4))
-	   		return (0);	
-		if (num_lines % 5 == 0 && **line != '\0')
-		{
-			//printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
-			//printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",
-					//l_len,num_lines,**line);
+		//printf("l_len = %i\n",l_len);
+		if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
 			return (0);
-		}
-		*/
-		printf("(%i or %i) && (%i && %i)\n",l_len != 0,l_len != 4,
-				num_lines % 5 == 0, **line != '\0');
+			/*(
 		if ((l_len != 0 || l_len != 4) && ( num_lines % 5 == 0 && **line != '\0'))
-		{
-			printf("overall = %i\n",(l_len != 0 || l_len != 4) || ( num_lines % 5 == 0 && **line != '\0'));
-			printf("VALID_TETRIS: Invalid line len OR Tetriminos LEN\n");
-			//printf("l_len = %i\t num_lines = %i\t **line = '%c'\n",
-					//l_len,num_lines,**line);
-			return (0);
-		}
-		if (num_lines % 5 == 0 && hashes != 4)
+					return (0);
+					*/
+		//printf("Hashes = %i\n",hashes);
+		if (num_lines % 5 == 4 && hashes != 4)
 		{
 			//printf("VALID_TETRIS: Invalid number of hashes = %i\n",hashes);
 			return (0);
