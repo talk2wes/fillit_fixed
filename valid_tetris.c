@@ -1,29 +1,25 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   valid_tetris.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 11:33:03 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/13 13:42:51 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/26 08:31:50 by wjohanso         ###   ########.fr       */
+/*   Created: 2020/02/27 00:38:39 by wjohanso          #+#    #+#             */
+/*   Updated: 2020/02/27 01:16:47 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-Valid input
-1 Tetriminos = 4x4 char array # of Tertiminos range = {1, 26} 
-Valid Chars = {'.', '#'} All lines end in '\n' 
-All Tetriminos 4x4 matricies must be seperated by a '\n'
-Tetriminos Must resemble classic tetris pieces.
-
-Each block ('#') must touch at least one other block on any of it's 4 sides.
-*/
-// 26 * 5 - 1 = 129 (5 LINES PER TETRIMINOS = 4X4 ARRAY + NEWLINE)
-// MINUS 1 because the last tetriminos does not have a newline
-/*Will return 0 for invalid tetriminos input, return 1 if the file is valid.
-*/
 #include "fillit.h"
+
+static int	check_input_a(int l_len, int num_lines, int hashes, char **line)
+{
+	if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
+		return (0);
+	if (num_lines % 5 == 4 && hashes != 4)
+		return (0);
+	return (1);
+}
 
 int			valid_tetris(int fd, t_blocks *blocks)
 {
@@ -34,33 +30,26 @@ int			valid_tetris(int fd, t_blocks *blocks)
 	int			l_len;
 	t_inputmap	input;
 
-	hashes = 0;
 	num_lines = 0;
-	inputmap_reset(&input); //remove? 
-	line = NULL;
-	line = (char**) ft_strnew(0);
+	line = (char**)ft_strnew(0);
 	while ((ret = get_next_line(fd, line)) == 1)
 	{
-		//printf("%s\n",*line);
+		hashes = (num_lines % 5 == 0) ? 0 : hashes;
 		num_lines++;
 		l_len = 0;
 		while (line[0][l_len] != '\n' && line[0][l_len] != 0)
 		{
 			hashes = (line[0][l_len] == '#') ? hashes + 1 : hashes;
 			if (line[0][l_len] != '.' && line[0][l_len] != '#')
-				return (0); 
+				return (0);
 			l_len++;
 		}
-		if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
+		if (!check_input_a(l_len, num_lines, hashes, line))
 			return (0);
-		if (num_lines % 5 == 4 && hashes != 4)
-			return (0);
-		if (num_lines % 5 == 0) 
-			hashes = 0;
 		input_map_store(line, num_lines, &input);
-		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0) 
+		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0)
 			t_blocks_store(input, blocks);
-		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0) 
+		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0)
 			return (0);
 	}
 	ft_strdel(line);
