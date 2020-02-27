@@ -6,31 +6,12 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 13:25:15 by wjohanso          #+#    #+#             */
-/*   Updated: 2019/12/27 19:32:56 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/25 12:21:24 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-
-static int		list_length(char const *s, char c)
-{
-	int len;
-
-	len = 0;
-	if (*s != c && *s != 0)
-	{
-		len++;
-		s++;
-	}
-	while (*s != 0)
-	{
-		if (*s != c && s[-1] == c)
-			len++;
-		s++;
-	}
-	return (len + 1);
-}
 
 char			**ft_strsplit(char const *s, char c)
 {
