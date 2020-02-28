@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:19:28 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/25 20:15:31 by wjohanso         ###   ########.fr       */
-/*   Updated: 2020/02/21 19:19:17 by wjohanso         ###   ########.fr       */
+/*   Created: 2020/02/28 11:47:11 by wjohanso          #+#    #+#             */
+/*   Updated: 2020/02/28 11:47:45 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
+#include "fillit.h"
 
 void	t_blocks_change_delta(t_blocks *blocks, int i, int j)
 {
@@ -27,23 +26,3 @@ void	t_blocks_change_delta(t_blocks *blocks, int i, int j)
 		x++;
 	}
 }
-
-
-/*
-void		t_blocks_update_position(t_blocks *blocks)
-{
-	int		i;
-
-	i = 0;
-	while (i < GRID_LENGTH)
-	{
-		(*blocks).x_position[i] = (*blocks).x_loc[i] + (*blocks).delta[0];
-		(*blocks).y_position[i] = (*blocks).y_loc[i] + (*blocks).delta[1];
-		i++;
-	}
-}
-
-
-t_blocks_change_delta(blocks, 1, 0);
-t_blocks_update_position(blocks);
-*/
