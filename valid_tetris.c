@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 00:38:39 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/27 01:16:47 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/28 12:16:56 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ static int	check_input_a(int l_len, int num_lines, int hashes, char **line)
 	if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
 		return (0);
 	if (num_lines % 5 == 4 && hashes != 4)
+		return (0);
+	return (1);
+}
+
+static int	adjacency_n_store(int num_lines, t_inputmap input,
+		t_blocks *blocks)
+{
+	if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0)
+		t_blocks_store(input, blocks);
+	else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0)
 		return (0);
 	return (1);
 }
@@ -47,13 +57,10 @@ int			valid_tetris(int fd, t_blocks *blocks)
 		if (!check_input_a(l_len, num_lines, hashes, line))
 			return (0);
 		input_map_store(line, num_lines, &input);
-		if (adjacency_counter(input.str) >= 6 && num_lines % 5 - 4 == 0)
-			t_blocks_store(input, blocks);
-		else if (adjacency_counter(input.str) < 6 && num_lines % 5 - 4 == 0)
+		if (!adjacency_n_store(num_lines, input, blocks))
 			return (0);
 	}
 	ft_strdel(line);
-	if (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1)
-		return (0);
-	return (1);
+	return (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret == -1) ?
+	0 : 1;
 }
