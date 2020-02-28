@@ -6,9 +6,14 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 23:58:52 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/27 20:08:37 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/28 12:59:55 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** line #116 had a "free_list" function, may be a memory leak issue
+** when I delete
+*/
 
 #include "fillit.h"
 
@@ -111,5 +116,4 @@ void		solve(t_blocks *piece, char **map, int map_size)
 		map = increase_map_size(map, map_size++);
 	print_board(map, map_size);
 	free_map(map, map_size);
-	//free_list(*piece);
 }

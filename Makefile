@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/02/28 11:34:43 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/28 13:16:11 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # THIS IS A MAKEFILE FOR THE ROOT DIRECTORY OF A PROGRAM THAT USES LIBFT
@@ -55,3 +55,12 @@ fclean: clean
 	@rm -f $(LIB_NAME) $(EXE)||:
 
 re: fclean all
+
+memory_test:
+	@echo "Making the Library & moving library to current directory"||:
+	@cd $(LIB_DIR) && gcc -Wall -Wextra -Werror -c $(FUNCT)||:
+	@cd $(LIB_DIR) && ar rc $(LIB_NAME) *.o||:
+	@mv $(LIB_DIR)$(LIB_NAME) .||:
+	@echo "Compiling all files w/ library"||:
+	@gcc -fsanitize=address -Wall -Wextra -Werror -c $(SRC)||:
+	@gcc -fsanitize=address *.o -L. -lft -o $(EXE)||:
