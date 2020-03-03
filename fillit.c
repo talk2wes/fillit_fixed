@@ -6,11 +6,23 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/26 23:21:56 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/03/02 19:18:26 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	free_blocks(t_blocks *blocks)
+{
+	t_blocks	*next_block;
+
+	while (blocks != NULL)
+	{
+		next_block = (*blocks).next;
+		free(blocks);
+		blocks = next_block;
+	}
+}
 
 int		main(int argc, char **argv)
 {
@@ -32,6 +44,7 @@ int		main(int argc, char **argv)
 	}
 	else
 		write(1, "error\n", 6);
+	free_blocks(blocks); //New: memory leak debugging 
 	close(fd);
 	return (0);
 }
