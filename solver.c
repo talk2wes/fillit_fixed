@@ -20,7 +20,7 @@
 int			check_overlap(char **map, t_blocks *piece, int map_size)
 {
 	int i;
-	//int col;
+	int col;
 	int row;
 
 	i = 0;
