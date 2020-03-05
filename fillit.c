@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/03/04 10:00:19 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:30:16 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int		main(int argc, char **argv)
 			write(1, "error\n", 6);
 	}
 	else if (argc != 2)
-		write(1, "usage: ./fillit source_file\n", 29); 
+		write(1, "usage: ./fillit source_file\n", 29);
 	else
 		write(1, "error\n", 6);
-	free_blocks(blocks); //New: memory leak debugging 
+	free_blocks(blocks);
 	close(fd);
 	return (0);
 }

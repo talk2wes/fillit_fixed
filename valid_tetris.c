@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 00:38:39 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/03/02 19:18:29 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:31:00 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 	int			ret_len[2];
 
 	num_lines = 0;
-	//line = (char**)ft_strnew(0);
-	line = (char**)ft_strnew(10);
+	line = (char**)malloc(sizeof(char**) * 10);
 	while ((ret_len[0] = get_next_line(fd, line)) == 1)
 	{
 		helper(&num_lines, &hashes, &ret_len[1]);
@@ -70,7 +69,7 @@ int			valid_tetris(int fd, t_blocks *blocks)
 		if (!adjacency_n_store(num_lines, input, blocks))
 			return (0);
 	}
-	ft_strdel(line);
+	free(line);
 	return (num_lines > MAXIMUM_LINES || num_lines % 5 != 4 || ret_len[0] == -1)
 	? 0 : 1;
 }
