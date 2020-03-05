@@ -6,16 +6,20 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 11:10:49 by wjohanso          #+#    #+#             */
-/*   Updated: 2019/12/30 21:35:02 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/25 11:39:57 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void		ft_putstr_fd(const char *s, int fd)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (!s)
-		return ;
-	while (*s)
-		write(fd, s++, 1);
+	if (s)
+	{
+		while (*s != 0)
+		{
+			write(fd, s, 1);
+			s++;
+		}
+	}
 }

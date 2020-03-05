@@ -6,7 +6,7 @@
 #    By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 12:09:10 by wjohanso          #+#    #+#              #
-#    Updated: 2020/01/04 10:03:13 by wjohanso         ###   ########.fr        #
+#    Updated: 2020/02/25 12:41:58 by wjohanso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FUNCT = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 		ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_find_magnitude.c\
 		ft_is_negative.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
-		ft_lstadd.c ft_lstiter.c ft_lstmap.c
+		ft_lstadd.c ft_lstiter.c ft_lstmap.c list_length.c is_space.c\
+		ft_is_uppercase.c
 SRC = main
 EXE = myprog
 SPACE = ______________________________________

@@ -1,20 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/28 11:23:17 by wjohanso          #+#    #+#             */
+/*   Updated: 2020/02/28 11:44:59 by wjohanso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
-int tetris_count(t_blocks *head)
+int			tetris_count(t_blocks *head)
 {
-    t_blocks *ptr;
-    int count;
-    ptr = head;
-    count = 0;
+	int			count;
+	t_blocks	*ptr;
 
-    while (ptr != NULL)
-    {
-        count += 1;
-        ptr = ptr->next;
-    }
-    return (count);
+	ptr = head;
+	count = 0;
+	while (ptr != NULL)
+	{
+		count += 1;
+		ptr = ptr->next;
+	}
+	return (count);
 }
-int		board_size(int tetris_count)
+
+int			board_size(int tetris_count)
 {
 	int		total_symbols;
 	int		row_col;
@@ -26,7 +39,7 @@ int		board_size(int tetris_count)
 	return (row_col);
 }
 
-int		find_sqrt(int n)
+int			find_sqrt(int n)
 {
 	int		x;
 	int		y;
@@ -41,7 +54,7 @@ int		find_sqrt(int n)
 	return (x);
 }
 
-char	**create_empty_board(int map_size)
+char		**create_empty_board(int map_size)
 {
 	int		i;
 	int		j;
@@ -63,44 +76,4 @@ char	**create_empty_board(int map_size)
 		i++;
 	}
 	return (map);
-}
-char	**increase_map_size(char **map, int map_size)
-{
-	char	**new_map;
-	int		i;
-
-	i = 0;
-	free_map(map, map_size);
-	new_map = create_empty_board(map_size + 1);
-	return (new_map);
-}
-
-void free_map(char **map, int map_size)
-{
-	int i;
-	i = 0;
-	while (i < map_size)
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-void	print_board(char **map, int map_size)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < map_size)
-	{
-		j = 0;
-		while (j < map_size)
-		{
-			write(1, &map[j][i], 1);
-			j++;
-		}
-		ft_putstr("\n");
-		i++;
-	}
 }

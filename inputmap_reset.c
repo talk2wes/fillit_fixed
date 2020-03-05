@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:05:04 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/18 15:52:58 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/26 23:23:37 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		inputmap_reset(t_inputmap *input)
 {
-	ft_memset(&((*input).str),0,END_INDEX + 1);
+	ft_memset(&((*input).str), 0, END_INDEX + 1);
 }

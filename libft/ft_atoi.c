@@ -6,23 +6,13 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 13:14:59 by wjohanso          #+#    #+#             */
-/*   Updated: 2019/12/31 17:28:36 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/02/25 12:31:13 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
-
-static int		is_space(char c)
-{
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\r' || c == '\f' ||
-			c == '\v')
-	{
-		return (1);
-	}
-	return (0);
-}
 
 int				ft_atoi(const char *str)
 {

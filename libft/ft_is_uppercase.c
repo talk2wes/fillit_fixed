@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_blocks_init.c                                    :+:      :+:    :+:   */
+/*   ft_is_uppercase.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/17 15:55:16 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/26 23:57:12 by wjohanso         ###   ########.fr       */
+/*   Created: 2020/02/25 12:40:13 by wjohanso          #+#    #+#             */
+/*   Updated: 2020/02/25 12:41:37 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-void		t_blocks_init(t_blocks *blocks)
+int			ft_is_uppercase(char c)
 {
-	int		i;
-
-	i = 0;
-	while (i < GRID_LENGTH)
-	{
-		if (i < 2)
-			(*blocks).delta[i] = INITIAL_DELTA;
-		(*blocks).x_loc[i] = INITIAL_XY;
-		(*blocks).y_loc[i++] = INITIAL_XY;
-		(*blocks).x_position[i] = INITIAL_POSITION;
-		(*blocks).y_position[i] = INITIAL_POSITION;
-	}
-	(*blocks).letter = (char)INITIAL_LETTER;
-	(*blocks).next = NULL;
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (0);
+	return (-1);
 }

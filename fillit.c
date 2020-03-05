@@ -6,65 +6,47 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:38:17 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/02/20 22:17:03 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/03/05 14:30:16 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+void	free_blocks(t_blocks *blocks)
+{
+	t_blocks	*next_block;
+
+	while (blocks != NULL)
+	{
+		next_block = (*blocks).next;
+		free(blocks);
+		blocks = next_block;
+	}
+}
+
 int		main(int argc, char **argv)
 {
-	int		fd;
-	int		out;
-	char	*testfile;
+	int			fd;
+	int			out;
 	t_blocks	*blocks;
-	int num_piece;
-	char **map;
-	int map_size;
 
-	blocks = t_blocks_newnode();
-	t_blocks_init(blocks);
-	testfile = ft_strnew(99);
-	out = -1;
+	t_blocks_init((blocks = t_blocks_newnode()));
 	fd = 0;
-	//usage case
-	//if (argc == 1)
-	//printf("argc == %i\n", argc);
-	if (argc == 3 && ft_strcmp("testing", argv[1]) == 0)
+	if (argc == 2 && (fd = open(argv[1], O_RDONLY)) >= 0 &&
+			(out = valid_tetris(fd, blocks) == 1))
 	{
-		//printf("argv[2] = \"%s\"\n", argv[2]);
-		testfile = ft_strjoin("./testfiles/", argv[2]);	
-		fd = open(testfile, O_RDONLY);
-		if (fd == -1)
-		{
-			printf("invalid file, abort\n");
-			return (0);
-		}
-		printf("testing: %s\n", testfile);
-
-		out = valid_tetris(fd, blocks);
-		
-		t_blocks_print_data(blocks);
-		printf("align_blocks\n");
 		align_blocks(blocks);
-		t_blocks_print_data(blocks);
 		if (out == 1)
-		{
-			printf("VALID\n");
-			num_piece = tetris_count(blocks);
-			map_size = board_size(num_piece);
-			map = create_empty_board(map_size);
-			//print_board(map, map_size);
-			//printf("\n");
-			solve(blocks, map, map_size);
-		}
-
+			solve(blocks, create_empty_board(board_size(tetris_count(blocks))),
+				board_size(tetris_count(blocks)));
 		else
-			printf("INVALID %i\n", out);
-		//align_blocks(blocks);
-		//printf("ALIGN BLOCKS\n");
-		//t_blocks_print_data(blocks);
+			write(1, "error\n", 6);
 	}
-	close(fd);	
+	else if (argc != 2)
+		write(1, "usage: ./fillit source_file\n", 29);
+	else
+		write(1, "error\n", 6);
+	free_blocks(blocks);
+	close(fd);
 	return (0);
 }
