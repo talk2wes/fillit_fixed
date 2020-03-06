@@ -6,7 +6,7 @@
 /*   By: wjohanso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 00:38:39 by wjohanso          #+#    #+#             */
-/*   Updated: 2020/03/05 14:31:00 by wjohanso         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:06:03 by wjohanso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	check_input_a(int l_len, int num_lines, int hashes, char **line)
 {
-	if ((l_len != 0 && l_len != 4) || (num_lines % 5 == 0 && **line != '\0'))
+	if ((num_lines % 5 == 0 && **line != '\0') ||
+		(num_lines % 5 != 0 && l_len != 4))
 		return (0);
 	if (num_lines % 5 == 4 && hashes != 4)
 		return (0);
